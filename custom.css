@@ -11,15 +11,45 @@ body {
 .jumbotron {
   background: url(public/wedding_photo1_edited-1.jpg) no-repeat center center;
   background-size: cover;
-  margin-top: 30px;
+  margin-top: 20px;
   padding: 50px;
   height: 600px;
 }
 
 .jumbotron h1 {
   font-family: 'Lobster', Georgia, Times, serif;
-  font-size: 85px;
-/*  line-height: 100px;*/
+  font-size: 80px;
+  line-height: 100px;
   text-align: center;
-  color: #468966;
+  margin-top: auto;
+  color: #79BD8F;
+/*  color: #468966;*/
 }
+
+.jumbotron p {
+  font-family: 'Cabin', Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 25px;
+  text-align: center;
+  color: #FF6138;
+}
+
+.search {
+  text-align: center;
+  margin-bottom: 100px;
+  margin-top: 300px;
+}
+
+#search-input-field {
+  padding: 10px;
+  font-size: 15px;
+}
+
+#search-button {
+  padding: 10px;
+  color: white;
+  background: #FF6138;
+  border: none;
+  font-size: 15px;
+}
+
