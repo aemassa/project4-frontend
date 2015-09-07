@@ -1,0 +1,25 @@
+body {
+  margin: 0 auto;
+}
+
+.navbar-brand {
+  font-family: 'Lobster', Georgia, Times, serif;
+  font-size: 30px;
+  color: #468966;
+}
+
+.jumbotron {
+  background: url(public/wedding_photo1_edited-1.jpg) no-repeat center center;
+  background-size: cover;
+  margin-top: 30px;
+  padding: 50px;
+  height: 600px;
+}
+
+.jumbotron h1 {
+  font-family: 'Lobster', Georgia, Times, serif;
+  font-size: 85px;
+/*  line-height: 100px;*/
+  text-align: center;
+  color: #468966;
+}
