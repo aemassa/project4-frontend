@@ -8,12 +8,28 @@ body {
   color: #468966;
 }
 
+#navbar-register, #navbar-login {
+  background: #79BD8F;
+  color: white;
+  padding: 8px;
+  font-family: 'Cabin', Helvetica, Arial, sans-serif;
+  border: 1px solid #79BD8F;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+#navbar-register:hover, #navbar-login:hover {
+  background: #BEEB9F;
+  border: 1px solid #BEEB9F;
+}
+
 .jumbotron {
   background: url(public/wedding_photo1_edited-1.jpg) no-repeat center center;
   background-size: cover;
   margin-top: 20px;
   padding: 50px;
   height: 600px;
+  font-family: 'Cabin', Helvetica, Arial, sans-serif;
 }
 
 .jumbotron h1 {
@@ -23,11 +39,9 @@ body {
   text-align: center;
   margin-top: auto;
   color: #79BD8F;
-/*  color: #468966;*/
 }
 
 .jumbotron p {
-  font-family: 'Cabin', Helvetica, Arial, sans-serif;
   font-size: 18px;
   line-height: 25px;
   text-align: center;
@@ -49,7 +63,12 @@ body {
   padding: 10px;
   color: white;
   background: #FF6138;
-  border: none;
+  border: 1px solid #FF6138;
+  border-radius: 5px;
   font-size: 15px;
 }
 
+#search-button:hover {
+  background: #FF7B38;
+  border: 1px solid #FF7B38;
+}
