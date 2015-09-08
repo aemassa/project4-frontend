@@ -2,6 +2,8 @@ body {
   margin: 0 auto;
 }
 
+/* Navbar */
+
 .navbar-brand {
   font-family: 'Lobster', Georgia, Times, serif;
   font-size: 30px;
@@ -22,6 +24,8 @@ body {
   background: #BEEB9F;
   border: 1px solid #BEEB9F;
 }
+
+/* Jumbotron */
 
 .jumbotron {
   background: url(public/wedding_photo1_edited-1.jpg) no-repeat center center;
@@ -72,3 +76,21 @@ body {
   background: #FF7B38;
   border: 1px solid #FF7B38;
 }
+
+@media (min-width: 451px) and (max-width: 600px) {
+  .jumbotron h1 {
+    font-size: 60px;
+    line-height: 70px;
+  }
+}
+
+@media (max-width: 450px) {
+  .jumbotron h1 {
+    font-size: 45px;
+    line-height: 45px;
+  }
+  .jumbotron p {
+    margin-top: 20px;
+  }
+}
+
