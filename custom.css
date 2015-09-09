@@ -10,7 +10,7 @@ body {
   color: #468966;
 }
 
-#navbar-register, #navbar-login {
+#navbar-register, #navbar-login, #register-modal-button, #login-modal-button {
   background: #79BD8F;
   color: white;
   padding: 8px;
@@ -20,7 +20,7 @@ body {
   font-size: 15px;
 }
 
-#navbar-register:hover, #navbar-login:hover {
+#navbar-register:hover, #navbar-login:hover, #register-modal-button:hover, #login-modal-button:hover {
   background: #BEEB9F;
   border: 1px solid #BEEB9F;
 }
@@ -75,6 +75,30 @@ body {
 #search-button:hover {
   background: #FF7B38;
   border: 1px solid #FF7B38;
+}
+
+/* Modal Styling */
+
+.modal-content {
+  font-family: 'Cabin', Helvetica, Arial, sans-serif;
+}
+
+.close-modal-button {
+  background: #7A7F75;
+  color: white;
+  padding: 8px;
+  border: 1px solid #7A7F75;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.close-modal-button:hover {
+  background: #9AA194;
+  color: white;
+  padding: 8px;
+  border: 1px solid #9AA194;
+  border-radius: 5px;
+  font-size: 15px;
 }
 
 @media (min-width: 451px) and (max-width: 600px) {
