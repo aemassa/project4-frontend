@@ -49,8 +49,20 @@ var photogFinderApi = (function () {
             alert("Login failed. Please try again.");
             console.log('Login failed.');
         });
-    } // ends login function
-
+    }, // ends login function
+    getAllProfiles: function(){
+        $.ajax(sa + '/profiles', {
+            dataType: 'json',
+            method: 'GET'
+        })
+        .done(function(data, textStatus, jqXHR) {
+            console.log(JSON.stringify(data));
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            alert("Failed to list profiles.");
+            console.log('Failed to list profiles.');
+        });
+    } // ends getAllProfiles function
   }; // ends return
 
 })(); //ends api function
