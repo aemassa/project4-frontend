@@ -53,4 +53,22 @@ $(function() {
         })
         .always();
     });
+
+    // $("#search-button").on("click", function(e) {
+    //     $.ajax(sa + "/profiles", {
+    //         method: "GET",
+    //         contentType: 'application/json',
+    //         data: JSON.stringify({
+    //           zip: zip
+    //         })
+    //     })
+    //     .done(function(data, textStatus, jqXHR) {
+    //         console.log(JSON.stringify(data));
+    //     })
+    //     .fail(function(jqXHR, textStatus, errorThrown) {
+    //         alert("Failed to list photographers.")
+    //         console.log('Failed to list photographers.')
+    //     })
+    //     .always();
+    // });
 });
