@@ -121,11 +121,19 @@
 
 <!-- Handlebars -->
   <script id="profile-template" type="text/x-handlebars-template">
+    <ul>
     {{#each profiles}}
       <div class="profile" data-id={{id}}>
-        <h1>{{name}}<h1>
+        <h3>{{name}} | {{city}}, {{state}}</h3>
+        <ul>
+          <li>{{website}}</li>
+          <li>{{email}}</li>
+          <li>{{phone}}</li>
+          <li>{{zip}}</li>
+        </ul>
       </div>
     {{/each}}
+    </ul>
   </script>
 
 
