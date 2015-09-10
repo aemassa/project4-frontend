@@ -57,6 +57,8 @@ var photogFinderApi = (function () {
         })
         .done(function(data, textStatus, jqXHR) {
             console.log(JSON.stringify(data));
+            var html = UI.profileTemplate({profiles: data.profiles});
+            $('#profiles-list').html(html);
         })
         .fail(function(jqXHR, textStatus, errorThrown) {
             alert("Failed to list profiles.");

@@ -1,5 +1,8 @@
 'use strict';
 
+var UI = {};
+UI.profileTemplate = Handlebars.compile($('#profile-template').html());
+
 $(document).ready(function(){
 
   // register and login
@@ -14,8 +17,8 @@ $(document).ready(function(){
   // get all profiles
   $('#search-button').on('click', function(){
     photogFinderApi.getAllProfiles();
-  });
 
+  });
 
 
 }); // ends document.ready function

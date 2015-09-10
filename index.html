@@ -113,168 +113,36 @@
 </div>
 
 <!-- Placeholder Page Content -->
-<div class="container">
+  <div class="container-fluid">
+    <div id="profiles-list">
 
-  <!-- Page Header -->
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Page Heading
-        <small>Secondary Text</small>
-      </h1>
-    </div>
-  </div>
-  <!-- /.row -->
-
-  <!-- Projects Row -->
-  <div class="row">
-    <div class="col-md-4 portfolio-item">
-      <a href="#">
-        <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-      </a>
-      <h3>
-        <a href="#">Project Name</a>
-      </h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-    </div>
-    <div class="col-md-4 portfolio-item">
-      <a href="#">
-        <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-      </a>
-      <h3>
-        <a href="#">Project Name</a>
-      </h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-    </div>
-    <div class="col-md-4 portfolio-item">
-      <a href="#">
-        <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-      </a>
-      <h3>
-        <a href="#">Project Name</a>
-      </h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-    </div>
-  </div>
-  <!-- /.row -->
-
-  <!-- Projects Row -->
-  <div class="row">
-    <div class="col-md-4 portfolio-item">
-      <a href="#">
-        <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-      </a>
-      <h3>
-        <a href="#">Project Name</a>
-      </h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-    </div>
-    <div class="col-md-4 portfolio-item">
-      <a href="#">
-        <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-      </a>
-      <h3>
-        <a href="#">Project Name</a>
-      </h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-    </div>
-    <div class="col-md-4 portfolio-item">
-      <a href="#">
-        <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-      </a>
-      <h3>
-        <a href="#">Project Name</a>
-      </h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
     </div>
   </div>
 
-  <!-- Projects Row -->
-  <div class="row">
-    <div class="col-md-4 portfolio-item">
-      <a href="#">
-        <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-      </a>
-      <h3>
-        <a href="#">Project Name</a>
-      </h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-    </div>
-    <div class="col-md-4 portfolio-item">
-      <a href="#">
-        <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-      </a>
-      <h3>
-        <a href="#">Project Name</a>
-      </h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-    </div>
-    <div class="col-md-4 portfolio-item">
-      <a href="#">
-        <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-      </a>
-      <h3>
-        <a href="#">Project Name</a>
-      </h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-    </div>
-  </div>
-  <!-- /.row -->
-
-  <hr>
-
-  <!-- Pagination -->
-  <div class="row text-center">
-    <div class="col-lg-12">
-      <ul class="pagination">
-        <li>
-          <a href="#">&laquo;</a>
-        </li>
-        <li class="active">
-          <a href="#">1</a>
-        </li>
-        <li>
-          <a href="#">2</a>
-        </li>
-        <li>
-          <a href="#">3</a>
-        </li>
-        <li>
-          <a href="#">4</a>
-        </li>
-        <li>
-          <a href="#">5</a>
-        </li>
-        <li>
-          <a href="#">&raquo;</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <!-- /.row -->
-
-  <hr>
-
-  <!-- Footer -->
-  <footer>
-    <div class="row">
-      <div class="col-lg-12">
-        <p>Copyright &copy; Your Website 2014</p>
+<!-- Handlebars -->
+  <script id="profile-template" type="text/x-handlebars-template">
+    {{#each profiles}}
+      <div class="profile" data-id={{id}}>
+        <h1>{{name}}<h1>
       </div>
-    </div>
-    <!-- /.row -->
-  </footer>
+    {{/each}}
+  </script>
 
-</div>
-<!-- /.container -->
 
 
 <!-- Scripts -->
+  <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Boostrap -->
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
 <!-- <script src="main.js"></script> -->
+  <!-- Handlebars -->
+<script src="bower_components/handlebars/handlebars.js"></script>
+  <!-- JS files -->
 <script src = "scripts/ajax.js"></script>
 <script src = "scripts/ui.js"></script>
+  <!-- simpleStorage -->
 <script src="bower_components/simpleStorage/simpleStorage.js"></script>
 </body>
 </html>
