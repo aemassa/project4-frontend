@@ -41,6 +41,7 @@
   </nav>
 
   <!-- Jumbotron -->
+<div id="jumbotron">
   <div class="jumbotron">
     <div class="container">
       <h1>photog finder</h1>
@@ -55,6 +56,7 @@
       </div>
     </div>
   </div>
+</div>
 
   <!-- Sign Up Modal -->
   <div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="register-modal-label">
@@ -112,10 +114,70 @@
   </div>
 </div>
 
-<!-- Placeholder Page Content -->
-  <div class="container-fluid">
+<!-- Placeholder Homepage Content -->
+  <div id="display">
     <div id="profiles-list">
 
+    </div>
+  </div>
+
+  <!-- Account Info: Create Profile -->
+  <div id="account-info" class="hidden">
+    <div class="container-fluid">
+      <h1>My Profile</h1>
+      <div class="create-profile">
+        <form id="profile-form" enctype="multipart/form-data" accept-charset="utf-8">
+          <div class="row">
+            <div class="form-group col-md-4">
+              <label for="input-name">Name</label>
+              <input type="text" class="form-control" id="input-name" name="profile[name]" placeholder="Name">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-4">
+              <label for="input-email">Email</label>
+              <input type="text" class="form-control" id="input-email" name="profile[email]" placeholder="Email">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-4">
+              <label for="input-website">Website</label>
+              <input type="text" class="form-control" id="input-website" name="profile[website]" placeholder="Website URL">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-4">
+              <label for="input-phone">Phone</label>
+              <input type="text" class="form-control" id="input-phone" name="profile[phone]" placeholder="Phone number">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-4">
+              <label for="input-city">City</label>
+              <input type="text" class="form-control" id="input-city" name="profile[city]" placeholder="City">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-4">
+              <label for="input-state">State</label>
+              <input type="text" class="form-control" id="input-state" name="profile[state]" placeholder="State">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-4">
+              <label for="input-zip">Zip</label>
+              <input type="text" class="form-control" id="input-zip" name="profile[zip]" placeholder="Zip Code">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-4">
+              <label for="profile-photo">Profile Photo</label>
+              <input type="file" name="profile[image]" id="profile-photo">
+            </div>
+          </div>
+          <button type="button" id="create-profile-button">Create Profile</button>
+        </form>
+      </div>
     </div>
   </div>
 
@@ -141,15 +203,18 @@
 <!-- Scripts -->
   <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
   <!-- Boostrap -->
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
-<!-- <script src="main.js"></script> -->
+
   <!-- Handlebars -->
 <script src="bower_components/handlebars/handlebars.js"></script>
+
   <!-- JS files -->
 <script src = "scripts/ajax.js"></script>
 <script src = "scripts/ui.js"></script>
+
   <!-- simpleStorage -->
 <script src="bower_components/simpleStorage/simpleStorage.js"></script>
 </body>

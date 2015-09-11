@@ -10,7 +10,7 @@ body {
   color: #468966;
 }
 
-#navbar-register, #navbar-login, #register-modal-button, #login-modal-button {
+#navbar-register, #navbar-login, #register-modal-button, #login-modal-button, #create-profile-button {
   background: #79BD8F;
   color: white;
   padding: 8px;
@@ -20,7 +20,7 @@ body {
   font-size: 15px;
 }
 
-#navbar-register:hover, #navbar-login:hover, #register-modal-button:hover, #login-modal-button:hover {
+#navbar-register:hover, #navbar-login:hover, #register-modal-button:hover, #login-modal-button:hover, #create-profile-button:hover {
   background: #BEEB9F;
   border: 1px solid #BEEB9F;
 }
@@ -101,6 +101,8 @@ body {
   font-size: 15px;
 }
 
+/* Resizing */
+
 @media (min-width: 451px) and (max-width: 600px) {
   .jumbotron h1 {
     font-size: 60px;
@@ -117,4 +119,17 @@ body {
     margin-top: 20px;
   }
 }
+
+/* Account Info */
+#account-info {
+  margin-top: 80px;
+  margin-left: 50px;
+  font-family: 'Cabin', Helvetica, Arial, sans-serif;
+}
+
+.create-profile {
+  font-size: 16px;
+}
+
+
 

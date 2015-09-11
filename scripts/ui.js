@@ -18,9 +18,10 @@ $(document).ready(function(){
   $('#search-button').on('click', function(){
     // photogFinderApi.getAllProfiles();
     photogFinderApi.searchProfiles($('#zip-code').val());
-
-
   });
 
+  $('#create-profile-button').on('click', function(){
+    photogFinderApi.createProfile();
+  })
 
 }); // ends document.ready function
