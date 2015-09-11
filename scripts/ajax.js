@@ -64,7 +64,22 @@ var photogFinderApi = (function () {
             alert("Failed to list profiles.");
             console.log('Failed to list profiles.');
         });
-    } // ends getAllProfiles function
+    }, // ends getAllProfiles function
+    searchProfiles: function(zip){
+        $.ajax(sa + '/profiles?zip=' + zip, {
+            dataType: 'json',
+            method: 'GET'
+        })
+        .done(function(data, textStatus, jqXHR) {
+            console.log(JSON.stringify(data));
+            var html = UI.profileTemplate({profiles: data.profiles});
+            $('#profiles-list').html(html);
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            alert("Failed to list profiles.");
+            console.log('Failed to list profiles.');
+        });
+    }, // ends searchProfiles function
   }; // ends return
 
 })(); //ends api function

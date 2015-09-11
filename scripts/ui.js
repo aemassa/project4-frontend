@@ -16,7 +16,9 @@ $(document).ready(function(){
 
   // get all profiles
   $('#search-button').on('click', function(){
-    photogFinderApi.getAllProfiles();
+    // photogFinderApi.getAllProfiles();
+    photogFinderApi.searchProfiles($('#zip-code').val());
+
 
   });
 
