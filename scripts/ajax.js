@@ -41,11 +41,28 @@ var photogFinderApi = (function () {
         processData: false
       })
       .done(function(data, textStatus, jqXHR) {
-            simpleStorage.set('token', data.token);
-            console.log(data.token);
+            console.log(data);
+            var photog = data.login_photographer;
+            var profile = photog.profile;
+            simpleStorage.set('token', photog.token);
+            // Refactor into functions
+            if (profile) {
+              $('#input-name').val(profile.name);
+              $('#input-email').val(profile.email);
+              $('#input-website').val(profile.website);
+              $('#input-phone').val(profile.phone);
+              $('#input-city').val(profile.city);
+              $('#input-state').val(profile.state);
+              $('#input-zip').val(profile.zip);
+            };
+
+            //
             $('#account-info').removeClass('hidden');
             $('#jumbotron').hide();
             $('#display').hide();
+            $('#navbar-register').hide();
+            $('#navbar-login').hide();
+            $('#navbar-profile').removeClass('hidden');
           })
       .fail(function(jqXHR, textStatus, errorThrown) {
         alert("Login failed. Please try again.");
@@ -94,15 +111,53 @@ var photogFinderApi = (function () {
         }
       })
       .done(function(data, textStatus, jqXHR) {
-        alert("Profile created successfully!")
+        alert("Profile created successfully!");
+        console.log(JSON.stringify(data));
+        $('#account-info').hide();
+        $('#edit-account-info').removeClass('hidden');
+      })
+      .fail(function(jqXHR, textStatus, errorThrown) {
+        alert("Failed to create profile. Please try again.");
+        console.log('Failed to create profile.');
+      });
+    }, // ends createProfile function
+    showProfile: function(id){
+      $.ajax(sa + '/profiles/' + id, {
+        dataType: 'json',
+        method: 'GET',
+        headers: {
+          Authorization: 'Token token=' + simpleStorage.get('token')
+        }
+      })
+      .done(function(data, textStatus, jqXHR) {
         console.log(JSON.stringify(data));
       })
       .fail(function(jqXHR, textStatus, errorThrown) {
-        alert("Failed to create profile. Please try again.")
-        console.log('Failed to create profile.')
+        alert("Failed to show profile.");
+        console.log('Failed to show profile.');
+      });
+    }, // ends showProfile function
+    editProfile: function(id){
+      var formData = new FormData($('#profile-form')[0]);
+      $.ajax(sa + '/profiles/' + id, {
+        type: 'PATCH',
+        contentType: false,
+        processData: false,
+        data: formData,
+        headers: {
+          Authorization: 'Token token=' + simpleStorage.get('token')
+        }
       })
-
-    } // ends createProfile function
+      .done(function(data, textStatus, jqXHR) {
+        alert("Profile updated successfully!");
+        console.log(JSON.stringify(data));
+        var html = UI.editProfileTemplate({profile: data.profile});
+      })
+      .fail(function(jqXHR, textStatus, errorThrown) {
+        alert("Failed to update profile. Please try again.");
+        console.log('Failed to update profile.');
+      });
+    } // ends editProfile function
   }; // ends return
 
 })(); //ends api function
