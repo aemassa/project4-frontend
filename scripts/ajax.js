@@ -48,6 +48,7 @@ var photogFinderApi = (function () {
             // Refactor into functions
             // Auto-populate profile info for existing profiles
             if (profile) {
+              $('#profile-form').data('id', profile.id);
               $('#input-name').val(profile.name);
               $('#input-email').val(profile.email);
               $('#input-website').val(profile.website);
@@ -58,6 +59,10 @@ var photogFinderApi = (function () {
               $('#create-profile-button').hide();
               $('#edit-profile-button').removeClass('hidden');
             };
+
+            if (profile.image_url){
+              $('.create-profile').append('<img src="' + profile.image_url + '" alt="Profile Picture">'  );
+            }
 
             // Hide homepage page info, show other stuff
             $('#account-info').removeClass('hidden');
@@ -140,9 +145,10 @@ var photogFinderApi = (function () {
         console.log('Failed to show profile.');
       });
     }, // ends showProfile function
-    editProfile: function(id){
-      var formData = new FormData($('#profile-form')[0]);
-      $.ajax(sa + '/profiles/' + id, {
+    editProfile: function(){
+      var $form = $('#profile-form');
+      var formData = new FormData($form[0]);
+      $.ajax(sa + '/profiles/' + $form.data('id'), {
         type: 'PATCH',
         contentType: false,
         processData: false,
@@ -154,7 +160,6 @@ var photogFinderApi = (function () {
       .done(function(data, textStatus, jqXHR) {
         alert("Profile updated successfully!");
         console.log(JSON.stringify(data));
-        var html = UI.editProfileTemplate({profile: data.profile});
       })
       .fail(function(jqXHR, textStatus, errorThrown) {
         alert("Failed to update profile. Please try again.");

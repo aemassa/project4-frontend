@@ -3,6 +3,8 @@
 var UI = {};
 UI.profileTemplate = Handlebars.compile($('#profile-template').html());
 
+// UI.editProfileTemplate = Handlebars.compile($('#edit-profile-template').html());
+
 $(document).ready(function(){
 
   // register and login
@@ -22,6 +24,14 @@ $(document).ready(function(){
 
   $('#create-profile-button').on('click', function(){
     photogFinderApi.createProfile();
-  })
+  });
+
+  $('#edit-profile-button').on('click', function(){
+    photogFinderApi.editProfile();
+  });
+
+  // $('#navbar-profile').on('click', function(){
+  //   photogFinderApi.showProfile($(this).id);
+  // });
 
 }); // ends document.ready function
