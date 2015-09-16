@@ -35,6 +35,7 @@
         <form class="navbar-form navbar-right">
           <button type="button" id="navbar-register" data-toggle="modal" data-target="#register-modal">Register</button>
           <button type="button" id="navbar-login" data-toggle="modal" data-target="#login-modal">Log In</button>
+          <button type="button" id="navbar-profile" class="hidden">My Profile</button>
         </form>
       </div><!--/.navbar-collapse -->
     </div>
@@ -176,15 +177,26 @@
             </div>
           </div>
           <button type="button" id="create-profile-button">Create Profile</button>
+          <button type="button" id="edit-profile-button" class="hidden">Save Changes</button>
         </form>
       </div>
     </div>
   </div>
 
-<!-- Handlebars -->
+<!-- Placeholder Edit Profile Content -->
+  <div id="edit-account-info" class="hidden">
+    <div class="container-fluid">
+      <h1>Edit Profile</h1>
+      <div id="edit-profile">
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Handlebars -->
   <script id="profile-template" type="text/x-handlebars-template">
     <ul>
-    {{#each profiles}}
+      {{#each profiles}}
       <div class="profile" data-id={{id}}>
         <h3>{{name}} | {{city}}, {{state}}</h3>
         <ul>
@@ -193,13 +205,11 @@
           <li>{{phone}}</li>
           <li>{{zip}}</li>
         </ul>
-      <img src="{{image_url}}" alt="Test Image">
+        <img src="{{image_url}}" alt="Test Image">
       </div>
-    {{/each}}
+      {{/each}}
     </ul>
   </script>
-
-
 
 <!-- Scripts -->
   <!-- jQuery -->

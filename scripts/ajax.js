@@ -46,6 +46,7 @@ var photogFinderApi = (function () {
             var profile = photog.profile;
             simpleStorage.set('token', photog.token);
             // Refactor into functions
+            // Auto-populate profile info for existing profiles
             if (profile) {
               $('#input-name').val(profile.name);
               $('#input-email').val(profile.email);
@@ -54,9 +55,11 @@ var photogFinderApi = (function () {
               $('#input-city').val(profile.city);
               $('#input-state').val(profile.state);
               $('#input-zip').val(profile.zip);
+              $('#create-profile-button').hide();
+              $('#edit-profile-button').removeClass('hidden');
             };
 
-            //
+            // Hide homepage page info, show other stuff
             $('#account-info').removeClass('hidden');
             $('#jumbotron').hide();
             $('#display').hide();
