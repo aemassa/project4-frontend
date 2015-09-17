@@ -30,6 +30,13 @@ $(document).ready(function(){
     photogFinderApi.editProfile();
   });
 
+  // $('#details-button').on('click', function(){
+  //   photogFinderApi.showProfile();
+  //   $('#detail-page').removeClass('hidden');
+  //   $('#jumbotron').hide();
+  //   $('#display').hide();
+  // });
+
   // $('#navbar-profile').on('click', function(){
   //   photogFinderApi.showProfile($(this).id);
   // });

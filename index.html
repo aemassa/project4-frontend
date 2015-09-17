@@ -183,14 +183,9 @@
     </div>
   </div>
 
-<!-- Placeholder Edit Profile Content -->
-  <div id="edit-account-info" class="hidden">
-    <div class="container-fluid">
-      <h1>Edit Profile</h1>
-      <div id="edit-profile">
-
-      </div>
-    </div>
+<!-- Placeholder Photographer Detail Content -->
+  <div id="detail-page" class="hidden">
+    <h1>Details!</h1>
   </div>
 
   <!-- Handlebars -->
@@ -200,12 +195,13 @@
       <div class="profile" data-id={{id}}>
         <h3>{{name}} | {{city}}, {{state}}</h3>
         <ul>
-          <li>{{website}}</li>
+          <li><a href="http://{{website}}">{{website}}</a></li>
           <li>{{email}}</li>
           <li>{{phone}}</li>
           <li>{{zip}}</li>
         </ul>
         <img src="{{image_url}}" alt="Test Image">
+        <button type="button" data-id={{id}} id="details-button">Details</button>
       </div>
       {{/each}}
     </ul>

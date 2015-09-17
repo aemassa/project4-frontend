@@ -122,29 +122,13 @@ var photogFinderApi = (function () {
         alert("Profile created successfully!");
         console.log(JSON.stringify(data));
         $('#account-info').hide();
-        $('#edit-account-info').removeClass('hidden');
+        //$('#edit-account-info').removeClass('hidden');
       })
       .fail(function(jqXHR, textStatus, errorThrown) {
         alert("Failed to create profile. Please try again.");
         console.log('Failed to create profile.');
       });
     }, // ends createProfile function
-    showProfile: function(id){
-      $.ajax(sa + '/profiles/' + id, {
-        dataType: 'json',
-        method: 'GET',
-        headers: {
-          Authorization: 'Token token=' + simpleStorage.get('token')
-        }
-      })
-      .done(function(data, textStatus, jqXHR) {
-        console.log(JSON.stringify(data));
-      })
-      .fail(function(jqXHR, textStatus, errorThrown) {
-        alert("Failed to show profile.");
-        console.log('Failed to show profile.');
-      });
-    }, // ends showProfile function
     editProfile: function(){
       var $form = $('#profile-form');
       var formData = new FormData($form[0]);
@@ -166,6 +150,22 @@ var photogFinderApi = (function () {
         console.log('Failed to update profile.');
       });
     } // ends editProfile function
+    // showProfile: function(id){
+    //   $.ajax(sa + '/profiles/' + id, {
+    //     dataType: 'json',
+    //     method: 'GET',
+    //     headers: {
+    //       Authorization: 'Token token=' + simpleStorage.get('token')
+    //     }
+    //   })
+    //   .done(function(data, textStatus, jqXHR) {
+    //     console.log(JSON.stringify(data));
+    //   })
+    //   .fail(function(jqXHR, textStatus, errorThrown) {
+    //     alert("Failed to show profile.");
+    //     console.log('Failed to show profile.');
+    //   });
+    // }, // ends showProfile function
   }; // ends return
 
 })(); //ends api function
