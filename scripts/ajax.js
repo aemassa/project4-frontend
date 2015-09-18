@@ -60,9 +60,9 @@ var photogFinderApi = (function () {
               $('#edit-profile-button').removeClass('hidden');
             };
 
-            if (profile.image_url){
-              $('.create-profile').append('<img src="' + profile.image_url + '" alt="Profile Picture">'  );
-            }
+            // if (profile.image_url){
+            //   $('.create-profile').append('<img src="' + profile.image_url + '" alt="Profile Picture">'  );
+            // }
 
             // Hide homepage page info, show other stuff
             $('#account-info').removeClass('hidden');
