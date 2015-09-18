@@ -33,13 +33,6 @@ $(document).ready(function(){
     photogFinderApi.editProfile();
   });
 
-  // show one profile
-  $('#profiles-list').on('click', '#details-button', function(){
-    console.log("$this: ", $(this));
-    console.log("button clicked!");
-  });
-
-
   // $('#details-button').on('click', function(){
   //   console.log('button clicked!');
     // photogFinderApi.showProfile();

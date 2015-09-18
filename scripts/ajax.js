@@ -150,23 +150,47 @@ var photogFinderApi = (function () {
         console.log('Failed to update profile.');
       });
     } // ends editProfile function
-    // showProfile: function(id){
-    //   $.ajax(sa + '/profiles/' + id, {
-    //     dataType: 'json',
-    //     method: 'GET',
-    //     headers: {
-    //       Authorization: 'Token token=' + simpleStorage.get('token')
-    //     }
-    //   })
-    //   .done(function(data, textStatus, jqXHR) {
-    //     console.log(JSON.stringify(data));
-    //   })
-    //   .fail(function(jqXHR, textStatus, errorThrown) {
-    //     alert("Failed to show profile.");
-    //     console.log('Failed to show profile.');
-    //   });
+    // showProfile: function(){
+
+      // $.ajax(sa + '/profiles/', {
+      //   dataType: 'json',
+      //   method: 'GET',
+      //   headers: {
+      //     Authorization: 'Token token=' + simpleStorage.get('token')
+      //   }
+      // })
+      // .done(function(data, textStatus, jqXHR) {
+      //   console.log(JSON.stringify(data));
+      // })
+      // .fail(function(jqXHR, textStatus, errorThrown) {
+      //   alert("Failed to show profile.");
+      //   console.log('Failed to show profile.');
+      // });
     // }, // ends showProfile function
   }; // ends return
 
 })(); //ends api function
 
+$(document).ready(function(){
+  // show one profile
+  $('#profiles-list').on('click', '#details-button', function(){
+    // console.log("$this: ", $(this));
+    // console.log("button clicked!");
+    // console.log($(this).data('id'));
+    var clickedId = $(this).data('id');
+    $.ajax(sa + '/profiles/' + clickedId, {
+      dataType: 'json',
+      method: 'GET',
+      headers: {
+        Authorization: 'Token token=' + simpleStorage.get('token')
+      }
+    })
+    .done(function(data, textStatus, jqXHR) {
+      console.log(JSON.stringify(data));
+    })
+    .fail(function(jqXHR, textStatus, errorThrown) {
+      alert("Failed to show profile.");
+      console.log('Failed to show profile.');
+    });
+  });
+})
