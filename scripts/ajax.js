@@ -187,6 +187,9 @@ $(document).ready(function(){
     })
     .done(function(data, textStatus, jqXHR) {
       console.log(JSON.stringify(data));
+      $('#jumbotron').hide();
+      $('#display').hide();
+      $('#detail-page').removeClass('hidden');
     })
     .fail(function(jqXHR, textStatus, errorThrown) {
       alert("Failed to show profile.");
