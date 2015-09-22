@@ -189,6 +189,9 @@
     <br>
     <br>
     <h1>Details!</h1>
+    <div id="details-list">
+
+    </div>
   </div>
 
   <!-- Handlebars -->
@@ -208,6 +211,13 @@
       </div>
       {{/each}}
     </ul>
+  </script>
+
+  <script id="detail-template" type="text/x-handlebars-template">
+    <div class="detail" data-id={{id}}>
+      <h3>{{profile.name}} | {{profile.city}}, {{profile.state}}</h3>
+      <img src="{{profile.image_url}}" alt="Profile Photo">
+    </div>
   </script>
 
 <!-- Scripts -->

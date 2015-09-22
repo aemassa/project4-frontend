@@ -3,7 +3,7 @@
 var UI = {};
 UI.profileTemplate = Handlebars.compile($('#profile-template').html());
 
-// UI.editProfileTemplate = Handlebars.compile($('#edit-profile-template').html());
+UI.detailTemplate = Handlebars.compile($('#detail-template').html());
 
 $(document).ready(function(){
 

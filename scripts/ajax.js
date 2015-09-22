@@ -190,6 +190,8 @@ $(document).ready(function(){
       $('#jumbotron').hide();
       $('#display').hide();
       $('#detail-page').removeClass('hidden');
+      var detail = UI.detailTemplate({profile: data.profile});
+      $('#details-list').html(detail);
     })
     .fail(function(jqXHR, textStatus, errorThrown) {
       alert("Failed to show profile.");
