@@ -206,7 +206,7 @@
           <li>{{phone}}</li>
           <li>{{zip}}</li>
         </ul>
-        <img src="{{image_url}}" alt="Test Image">
+        <img src="{{image_url_thumb}}" alt="Test Image">
         <button type="button" id="details-button" data-id={{id}}>Details</button>
       </div>
       {{/each}}
@@ -216,7 +216,7 @@
   <script id="detail-template" type="text/x-handlebars-template">
     <div class="detail" data-id={{id}}>
       <h3>{{profile.name}} | {{profile.city}}, {{profile.state}}</h3>
-      <img src="{{profile.image_url}}" alt="Profile Photo">
+      <img src="{{profile.image_url_med}}" alt="Profile Photo">
     </div>
   </script>
 
