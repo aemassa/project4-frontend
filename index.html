@@ -119,6 +119,7 @@
   <div id="display">
     <div id="profiles-list">
 
+
     </div>
   </div>
 
@@ -127,6 +128,7 @@
     <div class="container-fluid">
       <h1>My Profile</h1>
       <div class="create-profile">
+      <button type="button" id="manage-gallery-button">Manage Photo Gallery</button>
         <form id="profile-form" enctype="multipart/form-data" accept-charset="utf-8">
           <div class="row">
             <div class="form-group col-md-4">
@@ -194,20 +196,31 @@
     </div>
   </div>
 
+<!-- Placeholder Photographer Detail Content -->
+  <div id="manage-gallery" class="hidden">
+    <div class="container-fluid">
+      <h1>My Photo Gallery</h1>
+      <div class="manage-gallery">
+        <form id="gallery-form" enctype="multipart/form-data" accept-charset="utf-8">
+          <div class="row">
+            <div class="form-group col-md-4">
+              <label for="gallery-photo">Upload Photo</label>
+              <input type="file" name="photo[gallery_image]" id="gallery-photo">
+            </div>
+          </div>
+          <button type="button" id="upload-photo-button">Upload Photo</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <!-- Handlebars -->
   <script id="profile-template" type="text/x-handlebars-template">
     <ul>
       {{#each profiles}}
       <div class="profile" data-id={{id}}>
-        <h3>{{name}} | {{city}}, {{state}}</h3>
-        <ul>
-          <li><a href="http://{{website}}">{{website}}</a></li>
-          <li>{{email}}</li>
-          <li>{{phone}}</li>
-          <li>{{zip}}</li>
-        </ul>
-        <img src="{{image_url_thumb}}" alt="Test Image">
-        <button type="button" id="details-button" data-id={{id}}>Details</button>
+        <h4>{{name}} | {{city}}, {{state}}</h4>
+        <img src="{{image_url_med}}" alt="Profile Image" id="profile-pic" data-id={{id}}>
       </div>
       {{/each}}
     </ul>
@@ -217,6 +230,11 @@
     <div class="detail" data-id={{id}}>
       <h3>{{profile.name}} | {{profile.city}}, {{profile.state}}</h3>
       <img src="{{profile.image_url_med}}" alt="Profile Photo">
+      <ul>
+        <li><a href="http://{{profile.website}}">{{profile.website}}</a></li>
+        <li>{{profile.email}}</li>
+        <li>{{profile.phone}}</li>
+      </ul>
     </div>
   </script>
 

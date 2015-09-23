@@ -33,6 +33,18 @@ $(document).ready(function(){
     photogFinderApi.editProfile();
   });
 
+  // manage photo gallery
+
+  $('#manage-gallery-button').on('click', function(){
+    $('#manage-gallery').removeClass('hidden');
+    $('#account-info').hide();
+  });
+
+  // add photo
+  $('#upload-photo-button').on('click', function(){
+    photogFinderApi.createPhoto();
+  })
+
   // $('#details-button').on('click', function(){
   //   console.log('button clicked!');
     // photogFinderApi.showProfile();

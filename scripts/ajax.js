@@ -58,16 +58,15 @@ var photogFinderApi = (function () {
               $('#input-zip').val(profile.zip);
               $('#create-profile-button').hide();
               $('#edit-profile-button').removeClass('hidden');
-            };
+              $('.create-profile').append('<img src="' + profile.image_url_thumb + '" alt="Profile Picture">'  );
 
-            // if (profile.image_url){
-            //   $('.create-profile').append('<img src="' + profile.image_url + '" alt="Profile Picture">'  );
-            // }
+            };
 
             // Hide homepage page info, show other stuff
             $('#account-info').removeClass('hidden');
             $('#jumbotron').hide();
             $('#display').hide();
+            $('#detail-page').hide();
             $('#navbar-register').hide();
             $('#navbar-login').hide();
             $('#navbar-profile').removeClass('hidden');
@@ -149,7 +148,36 @@ var photogFinderApi = (function () {
         alert("Failed to update profile. Please try again.");
         console.log('Failed to update profile.');
       });
-    } // ends editProfile function
+    }, // ends editProfile function
+    createPhoto: function(){
+      var $form = $('#gallery-form');
+      var formData = new FormData($form[0]);
+      console.log("$form is: ", $form);
+      console.log("formData is: ", formData);
+      // FIX ME
+      $.ajax(sa + '/profiles/' + $('#profile-form').data('id') + '/photos', {
+        type: 'POST',
+        contentType: false,
+        processData: false,
+        data: formData,
+        headers: {
+          Authorization: 'Token token=' + simpleStorage.get('token')
+        }
+      })
+      .done(function(data, textStatus, jqXHR) {
+        alert("Photo added successfully!");
+        console.log(JSON.stringify(data));
+      })
+      .fail(function(jqXHR, textStatus, errorThrown) {
+        alert("Failed to add photo. Please try again.");
+        console.log('Failed to add photo.');
+        console.log("THE CURRENT PHOTOGRAPHER IS ", current_photographer);
+      });
+    }
+
+
+
+
     // showProfile: function(){
 
       // $.ajax(sa + '/profiles/', {
@@ -173,7 +201,7 @@ var photogFinderApi = (function () {
 
 $(document).ready(function(){
   // show one profile
-  $('#profiles-list').on('click', '#details-button', function(){
+  $('#profiles-list').on('click', '#profile-pic', function(){
     // console.log("$this: ", $(this));
     // console.log("button clicked!");
     // console.log($(this).data('id'));
