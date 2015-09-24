@@ -186,14 +186,13 @@ var photogFinderApi = (function () {
       })
       .done(function(data, textStatus, jqXHR) {
         console.log(JSON.stringify(data));
-        // var html = UI.photoTemplate({photo: data.photo});
-        // $('#photo-gallery').html(html);
+        var html = UI.photoGalleryTemplate({photos: data.photos});
+        $('#photo-gallery').html(html);
       })
       .fail(function(jqXHR, textStatus, errorThrown) {
         alert("Failed to show photos. Please try again.");
         console.log('Failed to show photos.');
       });
-
     }
 
 
@@ -247,4 +246,24 @@ $(document).ready(function(){
       console.log('Failed to show profile.');
     });
   });
-})
+
+  $('#photo-gallery').on('click', '#delete-photo-button', function(){
+    var profileId = $('#profile-form').data('id');
+    var photoId = $(this).data('id');
+    //console.log(clickedId);
+    $.ajax(sa + '/profiles/' + profileId + '/photos/' + photoId, {
+      contentType: "application/json",
+      processData: false,
+      method: "DELETE",
+      headers: {
+        Authorization: 'Token token=' + simpleStorage.get('token')
+    }
+  }).done(function(data, textStatus, jqXHR) {
+      alert("Photo deleted!");
+      console.log('Photo deleted!');
+  }).fail(function(jqXHR, textStatus, errorThrown) {
+      alert("Faield to delete photo.");
+      console.log('Failed to delete photo.');
+    });
+  });
+}); // ends document.ready function

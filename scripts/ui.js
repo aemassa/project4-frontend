@@ -7,6 +7,8 @@ UI.detailTemplate = Handlebars.compile($('#detail-template').html());
 
 UI.photoTemplate = Handlebars.compile($('#photo-template').html());
 
+UI.photoGalleryTemplate = Handlebars.compile($('#photo-gallery-template').html());
+
 $(document).ready(function(){
 
   // register
@@ -46,7 +48,12 @@ $(document).ready(function(){
   // add photo
   $('#upload-photo-button').on('click', function(){
     photogFinderApi.createPhoto();
-  })
+  });
+
+  // delete photo
+  // $('#delete-photo-button').on('click', function(){
+  //   photogFinderApi.deletePhoto();
+  // });
 
   // $('#details-button').on('click', function(){
   //   console.log('button clicked!');

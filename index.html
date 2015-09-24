@@ -251,6 +251,18 @@
     </div>
   </script>
 
+    <!-- Render Uploaded Gallery Photos -->
+  <script id="photo-gallery-template" type="text/x-handlebars-template">
+    <ul>
+      {{#each photos}}
+      <div class="photo" data-id={{id}}>
+        <img src="{{gallery_image_url_med}}" alt="Gallery Photo">
+        <button type="button" id="delete-photo-button" data-id={{id}}>Delete Photo {{id}}</button>
+      </div>
+      {{/each}}
+    </ul>
+  </script>
+
 <!-- Scripts -->
   <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
