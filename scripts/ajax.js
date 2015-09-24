@@ -167,12 +167,33 @@ var photogFinderApi = (function () {
       .done(function(data, textStatus, jqXHR) {
         alert("Photo added successfully!");
         console.log(JSON.stringify(data));
+        var html = UI.photoTemplate({photo: data.photo});
+        $('#photo-gallery').html(html);
       })
       .fail(function(jqXHR, textStatus, errorThrown) {
         alert("Failed to add photo. Please try again.");
         console.log('Failed to add photo.');
-        console.log("THE CURRENT PHOTOGRAPHER IS ", current_photographer);
       });
+    },
+    getAllPhotos: function(){
+      // FIX ME
+      $.ajax(sa + '/profiles/' + $('#profile-form').data('id') + '/photos', {
+        dataType: 'json',
+        method: 'GET',
+        headers: {
+          Authorization: 'Token token=' + simpleStorage.get('token')
+        }
+      })
+      .done(function(data, textStatus, jqXHR) {
+        console.log(JSON.stringify(data));
+        // var html = UI.photoTemplate({photo: data.photo});
+        // $('#photo-gallery').html(html);
+      })
+      .fail(function(jqXHR, textStatus, errorThrown) {
+        alert("Failed to show photos. Please try again.");
+        console.log('Failed to show photos.');
+      });
+
     }
 
 

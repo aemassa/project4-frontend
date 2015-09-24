@@ -196,7 +196,7 @@
     </div>
   </div>
 
-<!-- Placeholder Photographer Detail Content -->
+<!-- Photo Gallery -->
   <div id="manage-gallery" class="hidden">
     <div class="container-fluid">
       <h1>My Photo Gallery</h1>
@@ -211,10 +211,14 @@
           <button type="button" id="upload-photo-button">Upload Photo</button>
         </form>
       </div>
+      <div id="photo-gallery">
+        <h1>Photos</h1>
+      </div>
     </div>
   </div>
 
   <!-- Handlebars -->
+    <!-- Render Profiles on Homepage -->
   <script id="profile-template" type="text/x-handlebars-template">
     <ul>
       {{#each profiles}}
@@ -226,6 +230,7 @@
     </ul>
   </script>
 
+    <!-- Render Photographer Details -->
   <script id="detail-template" type="text/x-handlebars-template">
     <div class="detail" data-id={{id}}>
       <h3>{{profile.name}} | {{profile.city}}, {{profile.state}}</h3>
@@ -235,6 +240,14 @@
         <li>{{profile.email}}</li>
         <li>{{profile.phone}}</li>
       </ul>
+    </div>
+  </script>
+
+    <!-- Render Uploaded Gallery Photos -->
+  <script id="photo-template" type="text/x-handlebars-template">
+    <div class="photo" data-id={{id}}>
+      <h3>The photo ID is {{photo.id}}. Here is a photo.</h3>
+      <img src="{{photo.gallery_image_url_med}}" alt="Gallery Photo">
     </div>
   </script>
 

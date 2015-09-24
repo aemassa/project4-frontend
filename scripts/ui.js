@@ -5,6 +5,8 @@ UI.profileTemplate = Handlebars.compile($('#profile-template').html());
 
 UI.detailTemplate = Handlebars.compile($('#detail-template').html());
 
+UI.photoTemplate = Handlebars.compile($('#photo-template').html());
+
 $(document).ready(function(){
 
   // register
@@ -38,6 +40,7 @@ $(document).ready(function(){
   $('#manage-gallery-button').on('click', function(){
     $('#manage-gallery').removeClass('hidden');
     $('#account-info').hide();
+    photogFinderApi.getAllPhotos();
   });
 
   // add photo
