@@ -5,7 +5,7 @@ UI.profileTemplate = Handlebars.compile($('#profile-template').html());
 
 UI.detailTemplate = Handlebars.compile($('#detail-template').html());
 
-UI.photoTemplate = Handlebars.compile($('#photo-template').html());
+// UI.photoTemplate = Handlebars.compile($('#photo-template').html());
 
 UI.photoGalleryTemplate = Handlebars.compile($('#photo-gallery-template').html());
 

@@ -149,32 +149,6 @@ var photogFinderApi = (function () {
         console.log('Failed to update profile.');
       });
     }, // ends editProfile function
-    createPhoto: function(){
-      var $form = $('#gallery-form');
-      var formData = new FormData($form[0]);
-      console.log("$form is: ", $form);
-      console.log("formData is: ", formData);
-      // FIX ME
-      $.ajax(sa + '/profiles/' + $('#profile-form').data('id') + '/photos', {
-        type: 'POST',
-        contentType: false,
-        processData: false,
-        data: formData,
-        headers: {
-          Authorization: 'Token token=' + simpleStorage.get('token')
-        }
-      })
-      .done(function(data, textStatus, jqXHR) {
-        alert("Photo added successfully!");
-        console.log(JSON.stringify(data));
-        var html = UI.photoTemplate({photo: data.photo});
-        $('#photo-gallery').html(html);
-      })
-      .fail(function(jqXHR, textStatus, errorThrown) {
-        alert("Failed to add photo. Please try again.");
-        console.log('Failed to add photo.');
-      });
-    },
     getAllPhotos: function(){
       // FIX ME
       $.ajax(sa + '/profiles/' + $('#profile-form').data('id') + '/photos', {
@@ -193,7 +167,32 @@ var photogFinderApi = (function () {
         alert("Failed to show photos. Please try again.");
         console.log('Failed to show photos.');
       });
-    }
+    },
+    createPhoto: function(){
+      var $form = $('#gallery-form');
+      var formData = new FormData($form[0]);
+      console.log("$form is: ", $form);
+      console.log("formData is: ", formData);
+      // FIX ME
+      $.ajax(sa + '/profiles/' + $('#profile-form').data('id') + '/photos', {
+        type: 'POST',
+        contentType: false,
+        processData: false,
+        data: formData,
+        headers: {
+          Authorization: 'Token token=' + simpleStorage.get('token')
+        }
+      })
+      .done(function(data, textStatus, jqXHR) {
+        alert("Photo added successfully!");
+        console.log(JSON.stringify(data));
+        photogFinderApi.getAllPhotos();
+      })
+      .fail(function(jqXHR, textStatus, errorThrown) {
+        alert("Failed to add photo. Please try again.");
+        console.log('Failed to add photo.');
+      });
+    },
 
 
 
@@ -260,6 +259,7 @@ $(document).ready(function(){
     }
   }).done(function(data, textStatus, jqXHR) {
       alert("Photo deleted!");
+
       console.log('Photo deleted!');
   }).fail(function(jqXHR, textStatus, errorThrown) {
       alert("Faield to delete photo.");
