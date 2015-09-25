@@ -11,6 +11,16 @@ UI.photoGalleryTemplate = Handlebars.compile($('#photo-gallery-template').html()
 
 $(document).ready(function(){
 
+  // homepage toggling
+
+  $('#navbar-brand').on('click', function(){
+    $('#jumbotron').show();
+    $('#display').show();
+    $('#account-info').hide();
+    $('#detail-page').hide();
+    $('#manage-gallery').hide();
+  });
+
   // register
   $('#register-modal-button').on('click', function(e) {
     photogFinderApi.register();
@@ -42,7 +52,7 @@ $(document).ready(function(){
   $('#manage-gallery-button').on('click', function(){
     $('#manage-gallery').removeClass('hidden');
     $('#account-info').hide();
-    photogFinderApi.getAllPhotos();
+    photogFinderApi.getCurrentPhotogPhotos();
   });
 
   // add photo
@@ -58,7 +68,7 @@ $(document).ready(function(){
   // $('#details-button').on('click', function(){
   //   console.log('button clicked!');
     // photogFinderApi.showProfile();
-    // $('#detail-page').removeClass(ß'hidden');
+    // $('#detail-page').removeClass('hidden');
     // $('#jumbotron').hide();
     // $('#display').hide();
   // });

@@ -41,10 +41,10 @@ var photogFinderApi = (function () {
         processData: false
       })
       .done(function(data, textStatus, jqXHR) {
-            console.log(data);
-            var photog = data.login_photographer;
-            var profile = photog.profile;
-            simpleStorage.set('token', photog.token);
+        console.log(data);
+        var photog = data.login_photographer;
+        var profile = photog.profile;
+        simpleStorage.set('token', photog.token);
             // Refactor into functions
             // Auto-populate profile info for existing profiles
             if (profile) {
@@ -71,10 +71,10 @@ var photogFinderApi = (function () {
             $('#navbar-login').hide();
             $('#navbar-profile').removeClass('hidden');
           })
-      .fail(function(jqXHR, textStatus, errorThrown) {
-        alert("Login failed. Please try again.");
-        console.log('Login failed.');
-      });
+.fail(function(jqXHR, textStatus, errorThrown) {
+  alert("Login failed. Please try again.");
+  console.log('Login failed.');
+});
     }, // ends login function
     getAllProfiles: function(){
       $.ajax(sa + '/profiles', {
@@ -149,7 +149,7 @@ var photogFinderApi = (function () {
         console.log('Failed to update profile.');
       });
     }, // ends editProfile function
-    getAllPhotos: function(){
+    getCurrentPhotogPhotos: function(){
       // FIX ME
       $.ajax(sa + '/profiles/' + $('#profile-form').data('id') + '/photos', {
         dataType: 'json',
@@ -160,6 +160,7 @@ var photogFinderApi = (function () {
       })
       .done(function(data, textStatus, jqXHR) {
         console.log(JSON.stringify(data));
+        console.log(data);
         var html = UI.photoGalleryTemplate({photos: data.photos});
         $('#photo-gallery').html(html);
       })
@@ -186,34 +187,30 @@ var photogFinderApi = (function () {
       .done(function(data, textStatus, jqXHR) {
         alert("Photo added successfully!");
         console.log(JSON.stringify(data));
-        photogFinderApi.getAllPhotos();
+        photogFinderApi.getCurrentPhotogPhotos();
       })
       .fail(function(jqXHR, textStatus, errorThrown) {
         alert("Failed to add photo. Please try again.");
         console.log('Failed to add photo.');
       });
     },
-
-
-
-
-    // showProfile: function(){
-
-      // $.ajax(sa + '/profiles/', {
-      //   dataType: 'json',
-      //   method: 'GET',
-      //   headers: {
-      //     Authorization: 'Token token=' + simpleStorage.get('token')
-      //   }
-      // })
-      // .done(function(data, textStatus, jqXHR) {
-      //   console.log(JSON.stringify(data));
-      // })
-      // .fail(function(jqXHR, textStatus, errorThrown) {
-      //   alert("Failed to show profile.");
-      //   console.log('Failed to show profile.');
-      // });
-    // }, // ends showProfile function
+    getAllPhotos: function(){
+      // FIX ME
+      $.ajax(sa + '/profiles/' + $('#profile-pic').data('id') + '/photos', {
+        dataType: 'json',
+        method: 'GET'
+      })
+      .done(function(data, textStatus, jqXHR) {
+        console.log(data);
+        console.log("The profile id is ", $('#profile-pic').data('id'));
+        var html = UI.photoGalleryTemplate({photos: data.photos});
+        $('#details-gallery').html(html);
+      })
+      .fail(function(jqXHR, textStatus, errorThrown) {
+        alert("Failed to show photos. Please try again.");
+        console.log('Failed to show photos.');
+      });
+    },
   }; // ends return
 
 })(); //ends api function
@@ -228,15 +225,16 @@ $(document).ready(function(){
     $.ajax(sa + '/profiles/' + clickedId, {
       dataType: 'json',
       method: 'GET',
-      headers: {
-        Authorization: 'Token token=' + simpleStorage.get('token')
-      }
+      // headers: {
+      //   Authorization: 'Token token=' + simpleStorage.get('token')
+      // }
     })
     .done(function(data, textStatus, jqXHR) {
       console.log(JSON.stringify(data));
       $('#jumbotron').hide();
       $('#display').hide();
       $('#detail-page').removeClass('hidden');
+      $('#detail-page').show();
       var detail = UI.detailTemplate({profile: data.profile});
       $('#details-list').html(detail);
     })
@@ -246,9 +244,26 @@ $(document).ready(function(){
     });
   });
 
-  $('#photo-gallery').on('click', '#delete-photo-button', function(){
-    var profileId = $('#profile-form').data('id');
-    var photoId = $(this).data('id');
+    $('#profiles-list').on('click', '#profile-pic', function(){
+      var clickedId = $(this).data('id');
+      $.ajax(sa + '/profiles/' + clickedId + '/photos', {
+        dataType: 'json',
+        method: 'GET'
+      })
+      .done(function(data, textStatus, jqXHR) {
+        console.log(data);
+        var html = UI.photoGalleryTemplate({photos: data.photos});
+        $('#details-gallery').html(html);
+      })
+      .fail(function(jqXHR, textStatus, errorThrown) {
+        alert("Failed to render photos for this photographer.");
+        console.log('Failed to render photos for this photographer.');
+      });
+    });
+
+    $('#photo-gallery').on('click', '#delete-photo-button', function(){
+      var profileId = $('#profile-form').data('id');
+      var photoId = $(this).data('id');
     //console.log(clickedId);
     $.ajax(sa + '/profiles/' + profileId + '/photos/' + photoId, {
       contentType: "application/json",
@@ -256,14 +271,15 @@ $(document).ready(function(){
       method: "DELETE",
       headers: {
         Authorization: 'Token token=' + simpleStorage.get('token')
-    }
-  }).done(function(data, textStatus, jqXHR) {
+      }
+    }).done(function(data, textStatus, jqXHR) {
       alert("Photo deleted!");
-
       console.log('Photo deleted!');
-  }).fail(function(jqXHR, textStatus, errorThrown) {
+      photogFinderApi.getCurrentPhotogPhotos();
+    }).fail(function(jqXHR, textStatus, errorThrown) {
       alert("Faield to delete photo.");
       console.log('Failed to delete photo.');
     });
   });
+
 }); // ends document.ready function
