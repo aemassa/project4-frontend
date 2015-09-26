@@ -1,6 +1,7 @@
 'use strict';
 
 var sa = 'http://localhost:3000';
+var currentPhotographerId;
 
 var photogFinderApi = (function () {
   return {
@@ -27,15 +28,10 @@ var photogFinderApi = (function () {
         console.log('Registration failed.');
       });
     }, // ends register function
-    login: function(){
+    login: function(credentials, callback){
       $.ajax(sa + '/login', {
         contentType: 'application/json',
-        data: JSON.stringify({
-          credentials: {
-            email: $('#login-modal-email').val(),
-            password: $('#login-modal-password').val()
-          }
-        }),
+        data: JSON.stringify(credentials),
         dataType: 'json',
         method: 'POST',
         processData: false
@@ -45,6 +41,7 @@ var photogFinderApi = (function () {
         var photog = data.login_photographer;
         var profile = photog.profile;
         simpleStorage.set('token', photog.token);
+        currentPhotographerId = photog.id;
             // Refactor into functions
             // Auto-populate profile info for existing profiles
             if (profile) {
@@ -120,7 +117,7 @@ var photogFinderApi = (function () {
       .done(function(data, textStatus, jqXHR) {
         alert("Profile created successfully!");
         console.log(JSON.stringify(data));
-        $('#account-info').hide();
+        // $('#account-info').hide();
         //$('#edit-account-info').removeClass('hidden');
       })
       .fail(function(jqXHR, textStatus, errorThrown) {
@@ -159,8 +156,10 @@ var photogFinderApi = (function () {
         }
       })
       .done(function(data, textStatus, jqXHR) {
-        console.log(JSON.stringify(data));
         console.log(data);
+        data.photos.forEach(function(photo){
+          photo['owner'] = (currentPhotographerId == photo.photographer.id);
+        });
         var html = UI.photoGalleryTemplate({photos: data.photos});
         $('#photo-gallery').html(html);
       })
@@ -203,6 +202,9 @@ var photogFinderApi = (function () {
       .done(function(data, textStatus, jqXHR) {
         console.log(data);
         console.log("The profile id is ", $('#profile-pic').data('id'));
+        data.photos.forEach(function(photo){
+          photo['owner'] = (currentPhotographerId == photo.photographer.id);
+        });
         var html = UI.photoGalleryTemplate({photos: data.photos});
         $('#details-gallery').html(html);
       })
@@ -252,6 +254,9 @@ $(document).ready(function(){
       })
       .done(function(data, textStatus, jqXHR) {
         console.log(data);
+        data.photos.forEach(function(photo){
+          photo['owner'] = (currentPhotographerId == photo.photographer.id);
+        });
         var html = UI.photoGalleryTemplate({photos: data.photos});
         $('#details-gallery').html(html);
       })

@@ -11,6 +11,8 @@ UI.photoGalleryTemplate = Handlebars.compile($('#photo-gallery-template').html()
 
 $(document).ready(function(){
 
+  photogFinderApi.getAllProfiles();
+
   // homepage toggling
 
   $('#navbar-brand').on('click', function(){
@@ -28,7 +30,14 @@ $(document).ready(function(){
 
   // login
   $('#login-modal-button').on('click', function(e) {
-    photogFinderApi.login();
+    photogFinderApi.login({
+          credentials: {
+            email: $('#login-modal-email').val(),
+            password: $('#login-modal-password').val()
+          }
+        }, function(err, data) {
+
+    });
   });
 
   // get all profiles

@@ -258,7 +258,9 @@
       {{#each photos}}
       <div class="photo" data-id={{id}}>
         <img src="{{gallery_image_url_med}}" alt="Gallery Photo">
+        {{#if owner}}
         <button type="button" id="delete-photo-button" data-id={{id}}>Delete Photo {{id}}</button>
+        {{/if}}
       </div>
       {{/each}}
     </ul>
