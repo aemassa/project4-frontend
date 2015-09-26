@@ -219,16 +219,22 @@
   </div>
 
   <!-- Handlebars -->
-    <!-- Render Profiles on Homepage -->
+    <!-- Render Profile Photos on Homepage -->
   <script id="profile-template" type="text/x-handlebars-template">
-    <ul>
-      {{#each profiles}}
-      <div class="profile" data-id={{id}}>
-        <h4>{{name}} | {{city}}, {{state}}</h4>
-        <img src="{{image_url_med}}" alt="Profile Image" id="profile-pic" data-id={{id}}>
+    <div class="container-fluid">
+    {{#grouped_each 3 profiles}}
+      <div class="row">
+        {{#each this}}
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <img src="{{image_url_orig}}" alt="Profile Photo" id="profile-pic" data-id={{id}}>
+            <p class="caption">{{name}} | {{city}}, {{state}}</p>
+          </div>
+        </div>
+        {{/each}}
       </div>
-      {{/each}}
-    </ul>
+    {{/grouped_each}}
+    </div>
   </script>
 
     <!-- Render Photographer Details -->

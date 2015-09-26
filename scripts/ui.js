@@ -9,6 +9,21 @@ UI.detailTemplate = Handlebars.compile($('#detail-template').html());
 
 UI.photoGalleryTemplate = Handlebars.compile($('#photo-gallery-template').html());
 
+Handlebars.registerHelper('grouped_each', function(every, context, options) {
+    var out = "", subcontext = [], i;
+    if (context && context.length > 0) {
+        for (i = 0; i < context.length; i++) {
+            if (i > 0 && i % every === 0) {
+                out += options.fn(subcontext);
+                subcontext = [];
+            }
+            subcontext.push(context[i]);
+        }
+        out += options.fn(subcontext);
+    }
+    return out;
+});
+
 $(document).ready(function(){
 
   photogFinderApi.getAllProfiles();
