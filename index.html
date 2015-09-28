@@ -190,10 +190,13 @@
     <br>
     <br>
     <br>
-    <h1>Details!</h1>
-    <div id="details-list"></div>
-    <div id="details-gallery">
-      <h2>Here's my invisible photo gallery...</h2>
+    <div class="container-fluid">
+      <div class="row fluid">
+        <div class="col-md-2" id="details-list">
+        </div>
+        <div class="col-md-10" id="details-gallery">
+        </div>
+      </div>
     </div>
   </div>
 
@@ -239,38 +242,45 @@
 
     <!-- Render Photographer Details -->
   <script id="detail-template" type="text/x-handlebars-template">
-    <div class="detail" data-id={{id}}>
-      <h3>{{profile.name}} | {{profile.city}}, {{profile.state}}</h3>
-      <img src="{{profile.image_url_med}}" alt="Profile Photo">
-      <ul>
-        <li><a href="http://{{profile.website}}">{{profile.website}}</a></li>
-        <li>{{profile.email}}</li>
-        <li>{{profile.phone}}</li>
-      </ul>
+    <div id="sidebar" data-id={{id}}>
+      <h2>{{profile.name}}</h2>
+      <p>{{profile.city}}, {{profile.state}}</p>
+      <div class="thumbnail" id="profile-pic-detail">
+        <img src="{{profile.image_url_med}}" alt="Porifle Photo">
+      </div>
+      {{#if profile.website}}
+        <h4><a href="http://{{profile.website}}">{{profile.website}}</a></h4>
+      {{/if}}
+      {{#if profile.email}}
+        <h4><a href="mailto:{{profile.email}}?Subject=Photog%20Finder%20Inquiry">{{profile.email}}</a></h4>
+      {{/if}}
+      {{#if profile.phone}}
+        <h4>{{profile.phone}}</h4>
+      {{/if}}
     </div>
   </script>
-
-    <!-- Render Uploaded Gallery Photos
-  <script id="photo-template" type="text/x-handlebars-template">
-    <div class="photo" data-id={{id}}>
-      <h3>The photo ID is {{photo.id}}. Here is a photo.</h3>
-      <img src="{{photo.gallery_image_url_med}}" alt="Gallery Photo">
-    </div>
-  </script> -->
 
     <!-- Render Uploaded Gallery Photos -->
   <script id="photo-gallery-template" type="text/x-handlebars-template">
-    <ul>
-      {{#each photos}}
-      <div class="photo" data-id={{id}}>
-        <img src="{{gallery_image_url_med}}" alt="Gallery Photo">
-        {{#if owner}}
-        <button type="button" id="delete-photo-button" data-id={{id}}>Delete Photo {{id}}</button>
-        {{/if}}
+    <div class="container-fluid">
+      <h2>Gallery</h2>
+      {{#grouped_each 3 photos}}
+        <div class="row">
+          {{#each this}}
+          <div class="col-md-4">
+            <div class="thumbnail" data-id={{id}}>
+              <img src="{{gallery_image_url_orig}}" alt="{{caption}}">
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      {{/grouped_each}}
       </div>
-      {{/each}}
-    </ul>
   </script>
+
+<!--               {{#if owner}}
+            <button type="button" id="delete-photo-button" data-id={{id}}>Delete Photo {{id}}</button>
+            {{/if}} -->
 
 <!-- Scripts -->
   <!-- jQuery -->
