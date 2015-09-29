@@ -69,10 +69,11 @@ $(document).ready(function(){
   });
 
   // edit profile
-  $('#navbar-edit-profile').on('click', function(){
+  $('#details-list').on('click', '#sidebar-edit-profile', function(){
     $('#account-info').removeClass('hidden');
     $('#account-info').show();
     $('#detail-page').hide();
+    // console.log('you clicked me');
   })
 
   $('#save-changes-button').on('click', function(){
@@ -82,7 +83,9 @@ $(document).ready(function(){
   // manage photo gallery
 
   $('#manage-gallery-button').on('click', function(){
+    console.log('you clicked me');
     $('#manage-gallery').removeClass('hidden');
+    $('#manage-gallery').show();
     $('#account-info').hide();
     photogFinderApi.getCurrentPhotogPhotos();
   });

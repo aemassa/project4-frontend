@@ -36,7 +36,6 @@
           <button type="button" id="navbar-register" data-toggle="modal" data-target="#register-modal">Register</button>
           <button type="button" id="navbar-login" data-toggle="modal" data-target="#login-modal">Log In</button>
           <button type="button" id="navbar-profile" class="hidden">My Profile</button>
-          <button type="button" id="navbar-edit-profile" class="hidden">Edit Profile</button>
         </form>
       </div><!--/.navbar-collapse -->
     </div>
@@ -248,7 +247,7 @@
       <h2>{{profile.name}}</h2>
       <p>{{profile.city}}, {{profile.state}}</p>
       <div class="thumbnail" id="profile-pic-detail">
-        <img src="{{profile.image_url_med}}" alt="Porifle Photo">
+        <img src="{{profile.image_url_med}}" alt="Profile Photo">
       </div>
       {{#if profile.website}}
         <h4><a href="http://{{profile.website}}">{{profile.website}}</a></h4>
@@ -258,6 +257,9 @@
       {{/if}}
       {{#if profile.phone}}
         <h4>{{profile.phone}}</h4>
+      {{/if}}
+      {{#if profile.profileMatches}}
+        <button type="button" id="sidebar-edit-profile" data-id={{id}}>Edit Profile</button>
       {{/if}}
     </div>
   </script>

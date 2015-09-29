@@ -2,6 +2,7 @@
 
 var sa = 'http://localhost:3000';
 var currentPhotographerId;
+var profileMatches;
 
 var photogFinderApi = (function () {
   return {
@@ -69,7 +70,7 @@ var photogFinderApi = (function () {
             $('#navbar-register').hide();
             $('#navbar-login').hide();
             // $('#navbar-profile').removeClass('hidden');
-            $('#navbar-edit-profile').removeClass('hidden');
+            // $('#navbar-edit-profile').removeClass('hidden');
           })
 .fail(function(jqXHR, textStatus, errorThrown) {
   alert("Login failed. Please try again.");
@@ -161,7 +162,7 @@ var photogFinderApi = (function () {
         }
       })
       .done(function(data, textStatus, jqXHR) {
-        console.log(JSON.stringify(data));
+        console.log(data);
         photogFinderApi.getCurrentPhotogPhotos();
       $('#jumbotron').hide();
       $('#display').hide();
@@ -266,6 +267,9 @@ $(document).ready(function(){
     })
     .done(function(data, textStatus, jqXHR) {
       console.log(data);
+      console.log(currentPhotographerId);
+      data.profile.profileMatches = (data.profile.photographer.token === simpleStorage.get('token'));
+
       $('#jumbotron').hide();
       $('#display').hide();
       $('#detail-page').removeClass('hidden');
@@ -298,27 +302,6 @@ $(document).ready(function(){
         console.log('Failed to render photos for this photographer.');
       });
     });
-
-    $('#photo-gallery').on('click', '#delete-photo-button', function(){
-      var profileId = $('#profile-form').data('id');
-      var photoId = $(this).data('id');
-    //console.log(clickedId);
-    $.ajax(sa + '/profiles/' + profileId + '/photos/' + photoId, {
-      contentType: "application/json",
-      processData: false,
-      method: "DELETE",
-      headers: {
-        Authorization: 'Token token=' + simpleStorage.get('token')
-      }
-    }).done(function(data, textStatus, jqXHR) {
-      alert("Photo deleted!");
-      console.log('Photo deleted!');
-      photogFinderApi.getCurrentPhotogPhotos();
-    }).fail(function(jqXHR, textStatus, errorThrown) {
-      alert("Faield to delete photo.");
-      console.log('Failed to delete photo.');
-    });
-  });
 
     $('#edit-photo-gallery').on('click', '#delete-photo-button', function(){
       var profileId = $('#profile-form').data('id');

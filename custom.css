@@ -21,7 +21,7 @@ body {
   font-size: 15px;
 }
 
-#navbar-edit-profile {
+#sidebar-edit-profile {
   background: #FF6138;
   color: white;
   padding: 8px;
@@ -37,7 +37,7 @@ body {
   border: 1px solid #BEEB9F;
 }
 
-#navbar-edit-profile:hover {
+#sidebar-edit-profile:hover {
   background: #FF7B38;
   border: 1px solid #FF7B38;
 }
