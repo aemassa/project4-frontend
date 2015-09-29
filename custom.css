@@ -11,7 +11,7 @@ body {
   color: #468966;
 }
 
-#navbar-register, #navbar-login, #navbar-profile, #register-modal-button, #login-modal-button, #create-profile-button, #edit-profile-button {
+#navbar-register, #navbar-login, #navbar-profile, #register-modal-button, #login-modal-button, #create-profile-button, #save-changes-button {
   background: #79BD8F;
   color: white;
   padding: 8px;
@@ -21,9 +21,25 @@ body {
   font-size: 15px;
 }
 
-#navbar-register:hover, #navbar-login:hover, #navbar-profile:hover, #register-modal-button:hover, #login-modal-button:hover, #create-profile-button:hover, #edit-profile-button:hover {
+#navbar-edit-profile {
+  background: #FF6138;
+  color: white;
+  padding: 8px;
+  font-family: 'Cabin', Helvetica, Arial, sans-serif;
+  border: 1px solid #FF6138;
+  border-radius: 5px;
+  font-size: 15px;
+
+}
+
+#navbar-register:hover, #navbar-login:hover, #navbar-profile:hover, #register-modal-button:hover, #login-modal-button:hover, #create-profile-button:hover, #save-changes-button:hover {
   background: #BEEB9F;
   border: 1px solid #BEEB9F;
+}
+
+#navbar-edit-profile:hover {
+  background: #FF7B38;
+  border: 1px solid #FF7B38;
 }
 
 /* Jumbotron */

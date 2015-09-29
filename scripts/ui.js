@@ -9,6 +9,8 @@ UI.detailTemplate = Handlebars.compile($('#detail-template').html());
 
 UI.photoGalleryTemplate = Handlebars.compile($('#photo-gallery-template').html());
 
+UI.editPhotoGalleryTemplate = Handlebars.compile($('#edit-photo-gallery-template').html());
+
 Handlebars.registerHelper('grouped_each', function(every, context, options) {
     var out = "", subcontext = [], i;
     if (context && context.length > 0) {
@@ -67,7 +69,13 @@ $(document).ready(function(){
   });
 
   // edit profile
-  $('#edit-profile-button').on('click', function(){
+  $('#navbar-edit-profile').on('click', function(){
+    $('#account-info').removeClass('hidden');
+    $('#account-info').show();
+    $('#detail-page').hide();
+  })
+
+  $('#save-changes-button').on('click', function(){
     photogFinderApi.editProfile();
   });
 

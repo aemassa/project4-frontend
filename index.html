@@ -36,6 +36,7 @@
           <button type="button" id="navbar-register" data-toggle="modal" data-target="#register-modal">Register</button>
           <button type="button" id="navbar-login" data-toggle="modal" data-target="#login-modal">Log In</button>
           <button type="button" id="navbar-profile" class="hidden">My Profile</button>
+          <button type="button" id="navbar-edit-profile" class="hidden">Edit Profile</button>
         </form>
       </div><!--/.navbar-collapse -->
     </div>
@@ -117,70 +118,73 @@
 
 <!-- Placeholder Homepage Content -->
   <div id="display">
-    <div id="profiles-list">
-
-
-    </div>
+    <div id="profiles-list"></div>
   </div>
 
-  <!-- Account Info: Create Profile -->
+  <!-- Account Info: Create/Edit Profile -->
   <div id="account-info" class="hidden">
     <div class="container-fluid">
-      <h1>My Profile</h1>
-      <div class="create-profile">
-      <button type="button" id="manage-gallery-button">Manage Photo Gallery</button>
-        <form id="profile-form" enctype="multipart/form-data" accept-charset="utf-8">
-          <div class="row">
-            <div class="form-group col-md-4">
-              <label for="input-name">Name</label>
-              <input type="text" class="form-control" id="input-name" name="profile[name]" placeholder="Name">
+      <div class="row fluid">
+        <h1>Edit Profile</h1>
+        <div class="col-md-3" id="edit-profile-sidebar">
+          <button type="button" id="manage-gallery-button">Manage Photo Gallery</button>
+        </div>
+        <div class="col-md-9" id="edit-profile-form">
+        <div class="create-profile">
+          <form id="profile-form" enctype="multipart/form-data" accept-charset="utf-8">
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label for="input-name">Name</label>
+                <input type="text" class="form-control" id="input-name" name="profile[name]" placeholder="Name">
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="form-group col-md-4">
-              <label for="input-email">Email</label>
-              <input type="text" class="form-control" id="input-email" name="profile[email]" placeholder="Email">
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label for="input-email">Email</label>
+                <input type="text" class="form-control" id="input-email" name="profile[email]" placeholder="Email">
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="form-group col-md-4">
-              <label for="input-website">Website</label>
-              <input type="text" class="form-control" id="input-website" name="profile[website]" placeholder="Website URL">
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label for="input-website">Website</label>
+                <input type="text" class="form-control" id="input-website" name="profile[website]" placeholder="Website URL">
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="form-group col-md-4">
-              <label for="input-phone">Phone</label>
-              <input type="text" class="form-control" id="input-phone" name="profile[phone]" placeholder="Phone number">
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label for="input-phone">Phone</label>
+                <input type="text" class="form-control" id="input-phone" name="profile[phone]" placeholder="Phone number">
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="form-group col-md-4">
-              <label for="input-city">City</label>
-              <input type="text" class="form-control" id="input-city" name="profile[city]" placeholder="City">
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label for="input-city">City</label>
+                <input type="text" class="form-control" id="input-city" name="profile[city]" placeholder="City">
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="form-group col-md-4">
-              <label for="input-state">State</label>
-              <input type="text" class="form-control" id="input-state" name="profile[state]" placeholder="State">
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label for="input-state">State</label>
+                <input type="text" class="form-control" id="input-state" name="profile[state]" placeholder="State">
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="form-group col-md-4">
-              <label for="input-zip">Zip</label>
-              <input type="text" class="form-control" id="input-zip" name="profile[zip]" placeholder="Zip Code">
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label for="input-zip">Zip</label>
+                <input type="text" class="form-control" id="input-zip" name="profile[zip]" placeholder="Zip Code">
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="form-group col-md-4">
-              <label for="profile-photo">Profile Photo</label>
-              <input type="file" name="profile[image]" id="profile-photo">
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label for="profile-photo">Profile Photo</label>
+                <input type="file" name="profile[image]" id="profile-photo">
+              </div>
             </div>
-          </div>
-          <button type="button" id="create-profile-button">Create Profile</button>
-          <button type="button" id="edit-profile-button" class="hidden">Save Changes</button>
-        </form>
+            <button type="button" id="create-profile-button">Create Profile</button>
+            <button type="button" id="save-changes-button" class="hidden">Save Changes</button>
+          </form>
+        </div>
+      </div>
       </div>
     </div>
   </div>
@@ -192,10 +196,8 @@
     <br>
     <div class="container-fluid">
       <div class="row fluid">
-        <div class="col-md-2" id="details-list">
-        </div>
-        <div class="col-md-10" id="details-gallery">
-        </div>
+        <div class="col-md-2" id="details-list"></div>
+        <div class="col-md-10" id="details-gallery"></div>
       </div>
     </div>
   </div>
@@ -215,7 +217,7 @@
           <button type="button" id="upload-photo-button">Upload Photo</button>
         </form>
       </div>
-      <div id="photo-gallery">
+      <div id="edit-photo-gallery">
         <h1>Photos</h1>
       </div>
     </div>
@@ -269,7 +271,7 @@
           {{#each this}}
           <div class="col-md-4">
             <div class="thumbnail" data-id={{id}}>
-              <img src="{{gallery_image_url_orig}}" alt="{{caption}}">
+              <img src="{{gallery_image_url_orig}}" alt="">
             </div>
           </div>
           {{/each}}
@@ -281,6 +283,28 @@
 <!--               {{#if owner}}
             <button type="button" id="delete-photo-button" data-id={{id}}>Delete Photo {{id}}</button>
             {{/if}} -->
+
+    <!-- Render Uploaded Gallery Photos -->
+  <script id="edit-photo-gallery-template" type="text/x-handlebars-template">
+    <div class="container-fluid">
+      <h2>Gallery</h2>
+      {{#grouped_each 3 photos}}
+        <div class="row">
+          {{#each this}}
+          <div class="col-md-4">
+            <div class="thumbnail" data-id={{id}}>
+              <img src="{{gallery_image_url_orig}}" alt="">
+              {{#if owner}}
+                <button type="button" id="delete-photo-button" data-id={{id}}>Delete Photo</button>
+              {{/if}}
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      {{/grouped_each}}
+      </div>
+  </script>
+
 
 <!-- Scripts -->
   <!-- jQuery -->

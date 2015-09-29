@@ -22,6 +22,7 @@ var photogFinderApi = (function () {
       .done(function(data, textStatus, jqXHR) {
         alert("Registration successful! Please log in.");
         console.log(JSON.stringify(data));
+        $('#navbar-register').hide();
       })
       .fail(function(jqXHR, textStatus, errorThrown) {
         alert("Registration failed. Please try again.");
@@ -54,19 +55,21 @@ var photogFinderApi = (function () {
               $('#input-state').val(profile.state);
               $('#input-zip').val(profile.zip);
               $('#create-profile-button').hide();
-              $('#edit-profile-button').removeClass('hidden');
-              $('.create-profile').append('<img src="' + profile.image_url_thumb + '" alt="Profile Picture">'  );
+              $('#save-changes-button').removeClass('hidden');
+              $('#edit-profile-sidebar').prepend('<img src="' + profile.image_url_med + '" alt="Profile Picture">'  );
 
             };
-
+            photogFinderApi.showProfile();
+            photogFinderApi.getCurrentPhotogPhotos();
             // Hide homepage page info, show other stuff
-            $('#account-info').removeClass('hidden');
-            $('#jumbotron').hide();
-            $('#display').hide();
-            $('#detail-page').hide();
+            // $('#account-info').removeClass('hidden');
+            // $('#jumbotron').hide();
+            // $('#display').hide();
+            // $('#detail-page').hide();
             $('#navbar-register').hide();
             $('#navbar-login').hide();
-            $('#navbar-profile').removeClass('hidden');
+            // $('#navbar-profile').removeClass('hidden');
+            $('#navbar-edit-profile').removeClass('hidden');
           })
 .fail(function(jqXHR, textStatus, errorThrown) {
   alert("Login failed. Please try again.");
@@ -140,12 +143,39 @@ var photogFinderApi = (function () {
       .done(function(data, textStatus, jqXHR) {
         alert("Profile updated successfully!");
         console.log(JSON.stringify(data));
+        photogFinderApi.showProfile();
       })
       .fail(function(jqXHR, textStatus, errorThrown) {
         alert("Failed to update profile. Please try again.");
         console.log('Failed to update profile.');
       });
     }, // ends editProfile function
+    showProfile: function(){
+      var $form = $('#profile-form');
+      var formData = new FormData($form[0]);
+      $.ajax(sa + '/profiles/' + $form.data('id'), {
+        dataType: 'json',
+        method: 'GET',
+        headers: {
+          Authorization: 'Token token=' + simpleStorage.get('token')
+        }
+      })
+      .done(function(data, textStatus, jqXHR) {
+        console.log(JSON.stringify(data));
+        photogFinderApi.getCurrentPhotogPhotos();
+      $('#jumbotron').hide();
+      $('#display').hide();
+      $('#account-info').hide();
+      $('#detail-page').removeClass('hidden');
+      $('#detail-page').show();
+      var detail = UI.detailTemplate({profile: data.profile});
+      $('#details-list').html(detail);
+      })
+      .fail(function(jqXHR, textStatus, errorThrown) {
+        alert("Failed to show profile. Please try again.");
+        console.log('Failed to shoq profile.');
+      });
+    }, // ends showProfile function
     getCurrentPhotogPhotos: function(){
       // FIX ME
       $.ajax(sa + '/profiles/' + $('#profile-form').data('id') + '/photos', {
@@ -161,7 +191,10 @@ var photogFinderApi = (function () {
           photo['owner'] = (currentPhotographerId == photo.photographer.id);
         });
         var html = UI.photoGalleryTemplate({photos: data.photos});
-        $('#photo-gallery').html(html);
+        $('#details-gallery').html(html);
+        var html = UI.editPhotoGalleryTemplate({photos: data.photos});
+        $('#edit-photo-gallery').html(html);
+        // $('#delete-photo-button').removeClass('hidden');
       })
       .fail(function(jqXHR, textStatus, errorThrown) {
         alert("Failed to show photos. Please try again.");
@@ -232,7 +265,7 @@ $(document).ready(function(){
       // }
     })
     .done(function(data, textStatus, jqXHR) {
-      console.log(JSON.stringify(data));
+      console.log(data);
       $('#jumbotron').hide();
       $('#display').hide();
       $('#detail-page').removeClass('hidden');
@@ -267,6 +300,27 @@ $(document).ready(function(){
     });
 
     $('#photo-gallery').on('click', '#delete-photo-button', function(){
+      var profileId = $('#profile-form').data('id');
+      var photoId = $(this).data('id');
+    //console.log(clickedId);
+    $.ajax(sa + '/profiles/' + profileId + '/photos/' + photoId, {
+      contentType: "application/json",
+      processData: false,
+      method: "DELETE",
+      headers: {
+        Authorization: 'Token token=' + simpleStorage.get('token')
+      }
+    }).done(function(data, textStatus, jqXHR) {
+      alert("Photo deleted!");
+      console.log('Photo deleted!');
+      photogFinderApi.getCurrentPhotogPhotos();
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+      alert("Faield to delete photo.");
+      console.log('Failed to delete photo.');
+    });
+  });
+
+    $('#edit-photo-gallery').on('click', '#delete-photo-button', function(){
       var profileId = $('#profile-form').data('id');
       var photoId = $(this).data('id');
     //console.log(clickedId);
