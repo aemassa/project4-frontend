@@ -57,9 +57,12 @@ var photogFinderApi = (function () {
               $('#input-zip').val(profile.zip);
               $('#create-profile-button').hide();
               $('#save-changes-button').removeClass('hidden');
-              $('#edit-profile-sidebar').prepend('<img src="' + profile.image_url_med + '" alt="Profile Picture">'  );
-
+              // $('#edit-profile-sidebar').prepend('<img src="' + profile.image_url_med + '" alt="Profile Picture">'  );
+              $('#profile-thumb').append('<div class="thumbnail" id="profile-pic-detail"><img src="' + profile.image_url_med + '" alt="Profile Photo"></div>');
+            // var photo = UI.profilePhotoTemplate({profile: data.profile});
+            // $('#profile-thumb').html(photo);
             };
+
             photogFinderApi.showProfile();
             photogFinderApi.getCurrentPhotogPhotos();
             // Hide homepage page info, show other stuff
@@ -205,7 +208,7 @@ var photogFinderApi = (function () {
       });
     },
     createPhoto: function(){
-      var $form = $('#gallery-form');
+      var $form = $('#add-photo-form');
       var formData = new FormData($form[0]);
       console.log("$form is: ", $form);
       console.log("formData is: ", formData);

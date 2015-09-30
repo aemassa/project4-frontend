@@ -124,66 +124,86 @@
   <div id="account-info" class="hidden">
     <div class="container-fluid">
       <div class="row fluid">
-        <h1>Edit Profile</h1>
         <div class="col-md-3" id="edit-profile-sidebar">
-          <button type="button" id="manage-gallery-button">Manage Photo Gallery</button>
+          <h1>Edit Profile</h1>
+            <div id="profile-thumb"></div>
+          <div class="create-profile">
+            <form id="profile-form" enctype="multipart/form-data" accept-charset="utf-8">
+              <div class="row">
+                <div class="form-group">
+                  <label for="input-name">Name</label>
+                  <input type="text" class="form-control" id="input-name" name="profile[name]" placeholder="Name">
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group">
+                  <label for="input-email">Email</label>
+                  <input type="text" class="form-control" id="input-email" name="profile[email]" placeholder="Email">
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group">
+                  <label for="input-website">Website</label>
+                  <input type="text" class="form-control" id="input-website" name="profile[website]" placeholder="Website URL">
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group">
+                  <label for="input-phone">Phone</label>
+                  <input type="text" class="form-control" id="input-phone" name="profile[phone]" placeholder="Phone number">
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group">
+                  <label for="input-city">City</label>
+                  <input type="text" class="form-control" id="input-city" name="profile[city]" placeholder="City">
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group">
+                  <label for="input-state">State</label>
+                  <input type="text" class="form-control" id="input-state" name="profile[state]" placeholder="State">
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group">
+                  <label for="input-zip">Zip</label>
+                  <input type="text" class="form-control" id="input-zip" name="profile[zip]" placeholder="Zip Code">
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group">
+                  <label for="profile-photo">Profile Photo</label>
+                  <input type="file" name="profile[image]" id="profile-photo">
+                </div>
+              </div>
+              <button type="button" id="create-profile-button">Create Profile</button>
+              <button type="button" id="save-changes-button" class="hidden">Save Changes</button>
+            </form>
+          </div>
         </div>
-        <div class="col-md-9" id="edit-profile-form">
-        <div class="create-profile">
-          <form id="profile-form" enctype="multipart/form-data" accept-charset="utf-8">
-            <div class="row">
-              <div class="form-group col-md-4">
-                <label for="input-name">Name</label>
-                <input type="text" class="form-control" id="input-name" name="profile[name]" placeholder="Name">
+          <div class="col-md-9" id="edit-profile-gallery">
+              <div class="container-fluid">
+                <h1>Add Photos</h1>
+                <div class="add-photos">
+                  <form id="add-photo-form" enctype="multipart/form-data" accept-charset="utf-8">
+                    <div class="row">
+                      <div class="form-group col-md-4">
+                        <label for="gallery-photo">Upload Photo</label>
+                        <input type="file" name="photo[gallery_image]" id="gallery-photo">
+                      </div>
+                    </div>
+                    <button type="button" id="upload-photo-button">Upload Photo</button>
+                  </form>
+                </div>
+                <div id="edit-photo-gallery">
+                  <h1>Photo Gallery</h1>
+                </div>
               </div>
             </div>
-            <div class="row">
-              <div class="form-group col-md-4">
-                <label for="input-email">Email</label>
-                <input type="text" class="form-control" id="input-email" name="profile[email]" placeholder="Email">
-              </div>
-            </div>
-            <div class="row">
-              <div class="form-group col-md-4">
-                <label for="input-website">Website</label>
-                <input type="text" class="form-control" id="input-website" name="profile[website]" placeholder="Website URL">
-              </div>
-            </div>
-            <div class="row">
-              <div class="form-group col-md-4">
-                <label for="input-phone">Phone</label>
-                <input type="text" class="form-control" id="input-phone" name="profile[phone]" placeholder="Phone number">
-              </div>
-            </div>
-            <div class="row">
-              <div class="form-group col-md-4">
-                <label for="input-city">City</label>
-                <input type="text" class="form-control" id="input-city" name="profile[city]" placeholder="City">
-              </div>
-            </div>
-            <div class="row">
-              <div class="form-group col-md-4">
-                <label for="input-state">State</label>
-                <input type="text" class="form-control" id="input-state" name="profile[state]" placeholder="State">
-              </div>
-            </div>
-            <div class="row">
-              <div class="form-group col-md-4">
-                <label for="input-zip">Zip</label>
-                <input type="text" class="form-control" id="input-zip" name="profile[zip]" placeholder="Zip Code">
-              </div>
-            </div>
-            <div class="row">
-              <div class="form-group col-md-4">
-                <label for="profile-photo">Profile Photo</label>
-                <input type="file" name="profile[image]" id="profile-photo">
-              </div>
-            </div>
-            <button type="button" id="create-profile-button">Create Profile</button>
-            <button type="button" id="save-changes-button" class="hidden">Save Changes</button>
-          </form>
+          </div>
+
         </div>
-      </div>
       </div>
     </div>
   </div>
@@ -202,7 +222,7 @@
   </div>
 
 <!-- Photo Gallery -->
-  <div id="manage-gallery" class="hidden">
+<!--   <div id="manage-gallery" class="hidden">
     <div class="container-fluid">
       <h1>My Photo Gallery</h1>
       <div class="manage-gallery">
@@ -220,7 +240,7 @@
         <h1>Photos</h1>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <!-- Handlebars -->
     <!-- Render Profile Photos on Homepage -->
@@ -263,6 +283,13 @@
       {{/if}}
     </div>
   </script>
+
+      <!-- Render Profile Photo on Homepage -->
+      <script id="profile-photo-template" type="text/x-handlebars-template">
+        <div class="thumbnail" id="profile-pic-detail" data-id={{id}}>
+          <img src="{{profile.image_url_med}}" alt="Profile Photo">
+        </div>
+      </script>
 
     <!-- Render Uploaded Gallery Photos -->
   <script id="photo-gallery-template" type="text/x-handlebars-template">
