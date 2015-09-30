@@ -108,8 +108,8 @@ $(document).ready(function(){
     // $('#display').hide();
   // });
 
-  // $('#navbar-profile').on('click', function(){
-  //   photogFinderApi.showProfile($(this).id);
-  // });
+  $('#navbar-profile').on('click', function(){
+    photogFinderApi.showProfile($(this).id);
+  });
 
 }); // ends document.ready function

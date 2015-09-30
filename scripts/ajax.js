@@ -69,7 +69,7 @@ var photogFinderApi = (function () {
             // $('#detail-page').hide();
             $('#navbar-register').hide();
             $('#navbar-login').hide();
-            // $('#navbar-profile').removeClass('hidden');
+            $('#navbar-profile').removeClass('hidden');
             // $('#navbar-edit-profile').removeClass('hidden');
           })
 .fail(function(jqXHR, textStatus, errorThrown) {
@@ -163,6 +163,8 @@ var photogFinderApi = (function () {
       })
       .done(function(data, textStatus, jqXHR) {
         console.log(data);
+        // data.profile.profileMatches = (data.profile.photographer.token === simpleStorage.get('token'));
+        data.profile.profileMatches = (data.profile.photographer.id === currentPhotographerId);
         photogFinderApi.getCurrentPhotogPhotos();
       $('#jumbotron').hide();
       $('#display').hide();
@@ -268,7 +270,8 @@ $(document).ready(function(){
     .done(function(data, textStatus, jqXHR) {
       console.log(data);
       console.log(currentPhotographerId);
-      data.profile.profileMatches = (data.profile.photographer.token === simpleStorage.get('token'));
+      // data.profile.profileMatches = (data.profile.photographer.token === simpleStorage.get('token'));
+      data.profile.profileMatches = (data.profile.photographer.id === currentPhotographerId);
 
       $('#jumbotron').hide();
       $('#display').hide();
