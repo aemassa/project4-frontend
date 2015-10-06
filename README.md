@@ -39,5 +39,7 @@ Repo: https://github.com/aemassa/project4-backend
 - Include validations for login and profile info.
 - Enable users to log out of the application.
 - Refactor code
-- Reach goal: Allow non-photographer users to create accounts and send messages to photographers.
+- Reach goals:
+  - Allow non-photographer users to create accounts and send messages to photographers.
+  - Allow visitors to specify a radius of 5 miles, 10 miles, etc. up to 50 miles.
 
