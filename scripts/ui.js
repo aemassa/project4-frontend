@@ -11,6 +11,8 @@ UI.photoGalleryTemplate = Handlebars.compile($('#photo-gallery-template').html()
 
 UI.editPhotoGalleryTemplate = Handlebars.compile($('#edit-photo-gallery-template').html());
 
+UI.modalGalleryTemplate = Handlebars.compile($('#modal-gallery-template').html());
+
 Handlebars.registerHelper('grouped_each', function(every, context, options) {
     var out = "", subcontext = [], i;
     if (context && context.length > 0) {
@@ -94,6 +96,14 @@ $(document).ready(function(){
   $('#upload-photo-button').on('click', function(){
     photogFinderApi.createPhoto();
   });
+
+  $('#details-gallery').on('click', '#gallery-thumb', function(){
+    var id = $(this).data('id');
+    console.log(id);
+    // var content = $('.carousel-inner');
+    // content.empty();
+  });
+
 
   // delete photo
   // $('#delete-photo-button').on('click', function(){
