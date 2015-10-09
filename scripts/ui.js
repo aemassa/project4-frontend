@@ -5,7 +5,7 @@ UI.profileTemplate = Handlebars.compile($('#profile-template').html());
 
 UI.detailTemplate = Handlebars.compile($('#detail-template').html());
 
-// UI.profilePhotoTemplate = Handlebars.compile($('#profile-photo-template').html());
+UI.profilePhotoTemplate = Handlebars.compile($('#profile-photo-template').html());
 
 UI.photoGalleryTemplate = Handlebars.compile($('#photo-gallery-template').html());
 
@@ -30,10 +30,10 @@ Handlebars.registerHelper('grouped_each', function(every, context, options) {
 
 $(document).ready(function(){
 
+  // show all profiles upon page load
   photogFinderApi.getAllProfiles();
 
   // homepage toggling
-
   $('#navbar-brand').on('click', function(){
     $('#jumbotron').show();
     $('#display').show();

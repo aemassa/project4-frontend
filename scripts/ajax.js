@@ -60,7 +60,9 @@ var photogFinderApi = (function () {
               $('#create-profile-button').hide();
               $('#save-changes-button').removeClass('hidden');
               // $('#edit-profile-sidebar').prepend('<img src="' + profile.image_url_med + '" alt="Profile Picture">'  );
-              $('#profile-thumb').append('<div class="thumbnail" id="profile-pic-detail"><img src="' + profile.image_url_med + '" alt="Profile Photo"></div>');
+              // $('#profile-thumb').append('<div class="thumbnail" id="profile-pic-detail"><img src="' + profile.image_url_med + '" alt="Profile Photo"></div>');
+              var html = UI.profilePhotoTemplate({profile: data.login_photographer.profile});
+              $('#profile-thumb').html(html);
 
             photogFinderApi.showProfile();
             photogFinderApi.getCurrentPhotogPhotos();
@@ -190,6 +192,8 @@ var photogFinderApi = (function () {
       $('#detail-page').show();
       var detail = UI.detailTemplate({profile: data.profile});
       $('#details-list').html(detail);
+      var html = UI.profilePhotoTemplate({profile: data.profile});
+      $('#profile-thumb').html(html);
       })
       .fail(function(jqXHR, textStatus, errorThrown) {
         alert("Failed to show profile. Please try again.");
