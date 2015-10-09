@@ -210,10 +210,15 @@ var photogFinderApi = (function () {
         data.photos.forEach(function(photo){
           photo['owner'] = (currentPhotographerId == photo.photographer.id);
         });
+        data.photos.forEach(function(photo){
+          photo['firstPhoto'] = (photo == data.photos[0]);
+        })
         var html = UI.photoGalleryTemplate({photos: data.photos});
         $('#details-gallery').html(html);
         var html = UI.editPhotoGalleryTemplate({photos: data.photos});
         $('#edit-photo-gallery').html(html);
+        var modalHtml = UI.modalGalleryTemplate({photos: data.photos});
+        $('#carousel-gallery').html(modalHtml);
         // $('#delete-photo-button').removeClass('hidden');
       })
       .fail(function(jqXHR, textStatus, errorThrown) {
@@ -283,8 +288,13 @@ var photogFinderApi = (function () {
         data.photos.forEach(function(photo){
           photo['owner'] = (currentPhotographerId == photo.photographer.id);
         });
+        data.photos.forEach(function(photo){
+          photo['firstPhoto'] = (photo == data.photos[0]);
+        })
         var html = UI.photoGalleryTemplate({photos: data.photos});
         $('#details-gallery').html(html);
+        var modalHtml = UI.modalGalleryTemplate({photos: data.photos});
+        $('#carousel-gallery').html(modalHtml);
       })
       .fail(function(jqXHR, textStatus, errorThrown) {
         alert("Failed to show photos. Please try again.");

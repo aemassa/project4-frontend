@@ -97,12 +97,6 @@ $(document).ready(function(){
     photogFinderApi.createPhoto();
   });
 
-  $('#details-gallery').on('click', '#gallery-thumb', function(){
-    var id = $(this).data('id');
-    console.log(id);
-    // var content = $('.carousel-inner');
-    // content.empty();
-  });
 
 
   // delete photo
