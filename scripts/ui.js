@@ -73,6 +73,7 @@ $(document).ready(function(){
   // edit profile
   $('#details-list').on('click', '#sidebar-edit-profile', function(){
     $('#account-info').removeClass('hidden');
+    $('#edit-profile-gallery').removeClass('hidden');
     $('#account-info').show();
     $('#detail-page').hide();
     // console.log('you clicked me');
@@ -97,6 +98,9 @@ $(document).ready(function(){
     photogFinderApi.createPhoto();
   });
 
+  // $('#upload-photo-button-new-photog').on('click', function(){
+  //   photogFinderApi.createPhotoNewUser();
+  // })
 
 
   // delete photo

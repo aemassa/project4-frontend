@@ -3,7 +3,7 @@
 var sa = 'http://localhost:3000';
 var currentPhotographerId;
 var profileMatches;
-var newUserProfileId;
+var currentPhotogProfileId;
 
 
 var photogFinderApi = (function () {
@@ -63,11 +63,15 @@ var photogFinderApi = (function () {
               // $('#profile-thumb').append('<div class="thumbnail" id="profile-pic-detail"><img src="' + profile.image_url_med + '" alt="Profile Photo"></div>');
               var html = UI.profilePhotoTemplate({profile: data.login_photographer.profile});
               $('#profile-thumb').html(html);
+              currentPhotogProfileId = $('#profile-form').data('id');
 
             photogFinderApi.showProfile();
             photogFinderApi.getCurrentPhotogPhotos();
             // var photo = UI.profilePhotoTemplate({profile: data.profile});
             // $('#profile-thumb').html(photo);
+            }
+            else {
+              $('#edit-profile-gallery').addClass('hidden');
             };
 
 
@@ -131,6 +135,7 @@ var photogFinderApi = (function () {
       .done(function(data, textStatus, jqXHR) {
         alert("Profile created successfully!");
         console.log(data);
+        currentPhotogProfileId = data.profile.id;
         // $('#account-info').hide();
         //$('#edit-account-info').removeClass('hidden');
       data.profile.profileMatches = (data.profile.photographer.id === currentPhotographerId);
@@ -142,6 +147,10 @@ var photogFinderApi = (function () {
       $('#detail-page').show();
       var detail = UI.detailTemplate({profile: data.profile});
       $('#details-list').html(detail);
+      $('#create-profile-button').hide();
+      $('#save-changes-button').removeClass('hidden');
+      var html = UI.profilePhotoTemplate({profile: data.profile});
+      $('#profile-thumb').html(html);
       })
       .fail(function(jqXHR, textStatus, errorThrown) {
         alert("Failed to create profile. Please try again.");
@@ -151,7 +160,8 @@ var photogFinderApi = (function () {
     editProfile: function(){
       var $form = $('#profile-form');
       var formData = new FormData($form[0]);
-      $.ajax(sa + '/profiles/' + $form.data('id'), {
+      $.ajax(sa + '/profiles/' + currentPhotogProfileId, {
+      // $.ajax(sa + '/profiles/' + $form.data('id'), {
         type: 'PATCH',
         contentType: false,
         processData: false,
@@ -173,7 +183,8 @@ var photogFinderApi = (function () {
     showProfile: function(){
       var $form = $('#profile-form');
       var formData = new FormData($form[0]);
-      $.ajax(sa + '/profiles/' + $form.data('id'), {
+      $.ajax(sa + '/profiles/' + currentPhotogProfileId, {
+      // $.ajax(sa + '/profiles/' + $form.data('id'), {
         dataType: 'json',
         method: 'GET',
         headers: {
@@ -202,7 +213,8 @@ var photogFinderApi = (function () {
     }, // ends showProfile function
     getCurrentPhotogPhotos: function(){
       // FIX ME
-      $.ajax(sa + '/profiles/' + $('#profile-form').data('id') + '/photos', {
+      $.ajax(sa + '/profiles/' + currentPhotogProfileId + '/photos', {
+      // $.ajax(sa + '/profiles/' + $('#profile-form').data('id') + '/photos', {
         dataType: 'json',
         method: 'GET',
         headers: {
@@ -236,32 +248,8 @@ var photogFinderApi = (function () {
       console.log("$form is: ", $form);
       console.log("formData is: ", formData);
       // FIX ME
-      $.ajax(sa + '/profiles/' + $('#profile-form').data('id') + '/photos', {
-        type: 'POST',
-        contentType: false,
-        processData: false,
-        data: formData,
-        headers: {
-          Authorization: 'Token token=' + simpleStorage.get('token')
-        }
-      })
-      .done(function(data, textStatus, jqXHR) {
-        alert("Photo added successfully!");
-        console.log(JSON.stringify(data));
-        photogFinderApi.getCurrentPhotogPhotos();
-      })
-      .fail(function(jqXHR, textStatus, errorThrown) {
-        alert("Failed to add photo. Please try again.");
-        console.log('Failed to add photo.');
-      });
-    },
-    createPhotoNewUser: function(){
-      var $form = $('#add-photo-form');
-      var formData = new FormData($form[0]);
-      console.log("$form is: ", $form);
-      console.log("formData is: ", formData);
-      // FIX ME
-      $.ajax(sa + '/profiles/' + $('#profile-form').data('id') + '/photos', {
+      $.ajax(sa + '/profiles/' + currentPhotogProfileId + '/photos', {
+      // $.ajax(sa + '/profiles/' + $('#profile-form').data('id') + '/photos', {
         type: 'POST',
         contentType: false,
         processData: false,
@@ -368,10 +356,10 @@ $(document).ready(function(){
     });
 
     $('#edit-photo-gallery').on('click', '#delete-photo-button', function(){
-      var profileId = $('#profile-form').data('id');
+      // var profileId = $('#profile-form').data('id');
       var photoId = $(this).data('id');
     //console.log(clickedId);
-    $.ajax(sa + '/profiles/' + profileId + '/photos/' + photoId, {
+    $.ajax(sa + '/profiles/' + currentPhotogProfileId + '/photos/' + photoId, {
       contentType: "application/json",
       processData: false,
       method: "DELETE",
