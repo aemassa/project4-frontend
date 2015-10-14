@@ -1,6 +1,7 @@
 'use strict';
 
-var sa = 'http://localhost:3000';
+// var sa = 'http://localhost:3000';
+var sa = 'https://sheltered-brushlands-7351.herokuapp.com';
 var currentPhotographerId;
 var profileMatches;
 var currentPhotogProfileId;
