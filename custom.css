@@ -29,7 +29,6 @@ body {
   border: 1px solid #FF6138;
   border-radius: 5px;
   font-size: 15px;
-
 }
 
 #navbar-register:hover, #navbar-login:hover, #navbar-profile:hover, #register-modal-button:hover, #login-modal-button:hover, #create-profile-button:hover, #save-changes-button:hover {
@@ -37,7 +36,7 @@ body {
   border: 1px solid #BEEB9F;
 }
 
-#sidebar-edit-profile:hover {
+#sidebar-edit-profile:hover, #home-button:hover {
   background: #FF7B38;
   border: 1px solid #FF7B38;
 }
@@ -161,4 +160,58 @@ body {
 
 .carousel-control.left,.carousel-control.right {
   background-image: none;
+}
+
+#welcome-wrapper {
+  border-radius: 20px;
+  border: 2px solid #9AA194;
+  text-align: center;
+}
+
+#welcome-logo h1 {
+  font-family: 'Lobster', Georgia, Times, serif;
+  font-size: 70px;
+  text-align: center;
+  color: #79BD8F;
+  margin: 0 auto;
+  line-height: 75px;
+  padding-bottom: 10px;
+}
+
+#welcome-headline h4 {
+  font-size: 18px;
+  text-align: center;
+  color: #FF6138;
+  text-transform: uppercase;
+  line-height: 20px;
+}
+
+#welcome-instructions h4 {
+  padding: 20px;
+  color: #9AA194;
+}
+
+#welcome-instructions p {
+  font-size: 35px;
+  color: #9AA194;
+}
+
+.welcome-list {
+  list-style-type: none;
+}
+
+.welcome-list .glyphicon {
+  color: #79BD8F;
+  padding: 10px;
+}
+
+#home-button {
+  background: #FF6138;
+  color: white;
+  padding: 8px;
+  font-family: 'Cabin', Helvetica, Arial, sans-serif;
+  border: 1px solid #FF6138;
+  border-radius: 5px;
+  font-size: 15px;
+  margin: 30px;
 }

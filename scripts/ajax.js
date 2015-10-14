@@ -59,6 +59,7 @@ var photogFinderApi = (function () {
               $('#input-zip').val(profile.zip);
               $('#create-profile-button').hide();
               $('#save-changes-button').removeClass('hidden');
+              $('#navbar-profile').removeClass('hidden');
               // $('#edit-profile-sidebar').prepend('<img src="' + profile.image_url_med + '" alt="Profile Picture">'  );
               // $('#profile-thumb').append('<div class="thumbnail" id="profile-pic-detail"><img src="' + profile.image_url_med + '" alt="Profile Photo"></div>');
               var html = UI.profilePhotoTemplate({profile: data.login_photographer.profile});
@@ -72,6 +73,7 @@ var photogFinderApi = (function () {
             }
             else {
               $('#edit-profile-gallery').addClass('hidden');
+              $('#sign-up-info').removeClass('hidden');
             };
 
 
@@ -83,7 +85,7 @@ var photogFinderApi = (function () {
             $('#detail-page').hide();
             $('#navbar-register').hide();
             $('#navbar-login').hide();
-            $('#navbar-profile').removeClass('hidden');
+            // $('#navbar-profile').removeClass('hidden');
             // $('#navbar-edit-profile').removeClass('hidden');
           })
 .fail(function(jqXHR, textStatus, errorThrown) {
@@ -151,6 +153,8 @@ var photogFinderApi = (function () {
       $('#save-changes-button').removeClass('hidden');
       var html = UI.profilePhotoTemplate({profile: data.profile});
       $('#profile-thumb').html(html);
+      $('#navbar-profile').removeClass('hidden');
+      $('#sign-up-info').addClass('hidden');
       })
       .fail(function(jqXHR, textStatus, errorThrown) {
         alert("Failed to create profile. Please try again.");

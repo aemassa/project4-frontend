@@ -42,6 +42,15 @@ $(document).ready(function(){
     $('#manage-gallery').hide();
   });
 
+  $('#home-button').on('click', function(){
+    $('#jumbotron').show();
+    $('#navbar-login').show();
+    $('#display').show();
+    $('#account-info').hide();
+    $('#detail-page').hide();
+    $('#manage-gallery').hide();
+  });
+
   // register
   $('#register-modal-button').on('click', function(e) {
     photogFinderApi.register();
