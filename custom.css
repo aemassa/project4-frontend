@@ -11,7 +11,7 @@ body {
   color: #468966;
 }
 
-#navbar-register, #navbar-login, #navbar-profile, #register-modal-button, #login-modal-button, #create-profile-button, #save-changes-button {
+#navbar-register, #navbar-login, #navbar-profile, #navbar-log-out, #register-modal-button, #login-modal-button, #create-profile-button, #save-changes-button {
   background: #79BD8F;
   color: white;
   padding: 8px;
@@ -31,7 +31,7 @@ body {
   font-size: 15px;
 }
 
-#navbar-register:hover, #navbar-login:hover, #navbar-profile:hover, #register-modal-button:hover, #login-modal-button:hover, #create-profile-button:hover, #save-changes-button:hover {
+#navbar-register:hover, #navbar-login:hover, #navbar-profile:hover, #navbar-log-out:hover, #register-modal-button:hover, #login-modal-button:hover, #create-profile-button:hover, #save-changes-button:hover {
   background: #BEEB9F;
   border: 1px solid #BEEB9F;
 }
@@ -215,3 +215,9 @@ body {
   font-size: 15px;
   margin: 30px;
 }
+
+#profile-pic, #gallery-thumb {
+  cursor: pointer; cursor: hand;
+}
+
+

@@ -36,6 +36,7 @@
           <button type="button" id="navbar-register" data-toggle="modal" data-target="#register-modal">Register</button>
           <button type="button" id="navbar-login" data-toggle="modal" data-target="#login-modal">Log In</button>
           <button type="button" id="navbar-profile" class="hidden">My Profile</button>
+          <button type="button" id="navbar-log-out" class="hidden">Log Out</button>
         </form>
       </div><!--/.navbar-collapse -->
     </div>
@@ -224,82 +225,56 @@
                   </div>
                 </div>
                 <button type="button" id="upload-photo-button">Upload Photo</button>
-              </div>
-              <div id="edit-photo-gallery">
-                <h1>Photo Gallery</h1>
-              </div>
+              </form>
+            </div>
+            <div id="edit-photo-gallery">
+              <h1>Photo Gallery</h1>
             </div>
           </div>
-          <div class="col-md-9 hidden" id="sign-up-info">
-            <div class="container-fluid" id="welcome-wrapper">
-              <div id="welcome-headline">
-                  <h4>Welcome to the </h4>
-                <div id="welcome-logo">
-                  <h1>photog finder</h1>
-                </div>
-                  <h4>community</h4>
+        </div>
+        <div class="col-md-9 hidden" id="sign-up-info">
+          <div class="container-fluid" id="welcome-wrapper">
+            <div id="welcome-headline">
+              <h4>Welcome to the </h4>
+              <div id="welcome-logo">
+                <h1>photog finder</h1>
               </div>
-              <div id="welcome-instructions">
-                <h4>To register as a photographer on Photog Finder, please follow these steps.</h4>
-                  <ul class="welcome-list">
-                    <li><p><span class="glyphicon glyphicon-pencil"></span>
-                        Enter your profile information</p></li>
-                       <br>
-                    <li><p><span class="glyphicon glyphicon-picture"></span>
-                        Upload a profile photo</p></li>
-                       <br>
-                    <li><p><span class="glyphicon glyphicon-ok"></span>
-                        Click "Create Profile"</p></li>
-                       <br>
-                    <li><p><span class="glyphicon glyphicon-camera"></span>
-                        Edit your profile, upload photos, and more!</p></li>
-                  </ul>
-              </div>
-              <button type="button" id="home-button">Home</button>
+              <h4>community</h4>
             </div>
-          </div>
-
+            <div id="welcome-instructions">
+              <h4>To register as a photographer on Photog Finder, please follow these steps.</h4>
+              <ul class="welcome-list">
+                <li><p><span class="glyphicon glyphicon-pencil"></span> Enter your profile information</p></li>
+                <br>
+                <li><p><span class="glyphicon glyphicon-picture"></span> Upload a profile photo</p></li>
+                <br>
+                <li><p><span class="glyphicon glyphicon-ok"></span> Click "Create Profile"</p></li>
+                <br>
+                <li><p><span class="glyphicon glyphicon-camera"></span> Edit your profile, upload photos, and more!</p></li>
+              </ul>
+            </div>
+            <button type="button" id="home-button">Home</button>
           </div>
         </div>
-      </div>
+      </div> <!-- row -->
     </div>
+  </div>
 
-    <!-- Placeholder Photographer Detail Content -->
-    <div id="detail-page" class="hidden">
-      <br>
-      <br>
-      <br>
-      <div class="container-fluid">
-        <div class="row fluid">
-          <div class="col-md-2" id="details-list"></div>
-          <div class="col-md-10" id="details-gallery"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Photo Gallery -->
-<!--   <div id="manage-gallery" class="hidden">
+  <!-- Placeholder Photographer Detail Content -->
+  <div id="detail-page" class="hidden">
+    <br>
+    <br>
+    <br>
     <div class="container-fluid">
-      <h1>My Photo Gallery</h1>
-      <div class="manage-gallery">
-        <form id="gallery-form" enctype="multipart/form-data" accept-charset="utf-8">
-          <div class="row">
-            <div class="form-group col-md-4">
-              <label for="gallery-photo">Upload Photo</label>
-              <input type="file" name="photo[gallery_image]" id="gallery-photo">
-            </div>
-          </div>
-          <button type="button" id="upload-photo-button">Upload Photo</button>
-        </form>
-      </div>
-      <div id="edit-photo-gallery">
-        <h1>Photos</h1>
+      <div class="row fluid">
+        <div class="col-md-2" id="details-list"></div>
+        <div class="col-md-10" id="details-gallery"></div>
       </div>
     </div>
-  </div> -->
+  </div>
 
   <!-- Handlebars -->
-  <!-- Render Profile Photos on Homepage -->
+    <!-- Render Profile Photos on Homepage -->
   <script id="profile-template" type="text/x-handlebars-template">
     <div class="container-fluid">
       {{#grouped_each 3 profiles}}
@@ -317,7 +292,7 @@
     </div>
   </script>
 
-  <!-- Render Photographer Details -->
+    <!-- Render Photographer Details -->
   <script id="detail-template" type="text/x-handlebars-template">
     <div id="sidebar" data-id={{id}}>
       <h2>{{profile.name}}</h2>
@@ -340,14 +315,14 @@
     </div>
   </script>
 
-  <!-- Render Profile Photo on Profile Page -->
+    <!-- Render Profile Photo on Profile Page -->
   <script id="profile-photo-template" type="text/x-handlebars-template">
     <div class="thumbnail" id="profile-pic-detail" data-id={{id}}>
       <img src="{{profile.image_url_med}}" alt="Profile Photo">
     </div>
   </script>
 
-  <!-- Render Uploaded Gallery Photos -->
+    <!-- Render Uploaded Gallery Photos -->
   <script id="photo-gallery-template" type="text/x-handlebars-template">
     <div class="container-fluid">
       <h2>Gallery</h2>
@@ -359,13 +334,13 @@
             <img src="{{gallery_image_url_orig}}" alt="">
           </div>
         </div>
-        {{/each}}
+          {{/each}}
       </div>
       {{/grouped_each}}
     </div>
   </script>
 
-  <!-- Render Uploaded Gallery Photos -->
+    <!-- Render Uploaded Gallery Photos -->
   <script id="edit-photo-gallery-template" type="text/x-handlebars-template">
     <div class="container-fluid">
       <h2>Gallery</h2>
@@ -386,20 +361,20 @@
     </div>
   </script>
 
-  <!-- Render Modal Gallery Photos -->
+    <!-- Render Modal Gallery Photos -->
   <script id="modal-gallery-template" type="text/x-handlebars-template">
     {{#each photos}}
     {{#if firstPhoto}}
-    <div class="item active" data-id={{id}}>
-      {{else}}
+      <div class="item active" data-id={{id}}>
+    {{else}}
       <div class="item" data-id={{id}}>
-        {{/if}}
-        <img src="{{gallery_image_url_orig}}" alt="">
+    {{/if}}
+      <img src="{{gallery_image_url_orig}}" alt="">
       </div>
-      {{/each}}
-    </script>
+    {{/each}}
+  </script>
 
-    <!-- Scripts -->
+<!-- Scripts -->
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
@@ -417,4 +392,4 @@
     <!-- simpleStorage -->
     <script src="bower_components/simpleStorage/simpleStorage.js"></script>
   </body>
-  </html>
+</html>

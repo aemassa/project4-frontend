@@ -85,21 +85,10 @@ $(document).ready(function(){
     $('#edit-profile-gallery').removeClass('hidden');
     $('#account-info').show();
     $('#detail-page').hide();
-    // console.log('you clicked me');
-  })
+  });
 
   $('#save-changes-button').on('click', function(){
     photogFinderApi.editProfile();
-  });
-
-  // manage photo gallery
-
-  $('#manage-gallery-button').on('click', function(){
-    console.log('you clicked me');
-    $('#manage-gallery').removeClass('hidden');
-    $('#manage-gallery').show();
-    $('#account-info').hide();
-    photogFinderApi.getCurrentPhotogPhotos();
   });
 
   // add photo
@@ -107,26 +96,15 @@ $(document).ready(function(){
     photogFinderApi.createPhoto();
   });
 
-  // $('#upload-photo-button-new-photog').on('click', function(){
-  //   photogFinderApi.createPhotoNewUser();
-  // })
-
-
-  // delete photo
-  // $('#delete-photo-button').on('click', function(){
-  //   photogFinderApi.deletePhoto();
-  // });
-
-  // $('#details-button').on('click', function(){
-  //   console.log('button clicked!');
-    // photogFinderApi.showProfile();
-    // $('#detail-page').removeClass('hidden');
-    // $('#jumbotron').hide();
-    // $('#display').hide();
-  // });
-
+  // show profile of logged in photographer
   $('#navbar-profile').on('click', function(){
     photogFinderApi.showProfile($(this).id);
+  });
+
+  // log out
+  $('#navbar-log-out').on('click', function(){
+    simpleStorage.flush();
+    location.reload();
   });
 
 }); // ends document.ready function
